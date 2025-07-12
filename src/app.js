@@ -9,6 +9,7 @@ import LoginPage from "./pages/Auth/Login";
 import ResetPasswordPage from "./pages/Auth/ResetPassword";
 import UpdatePasswordPage from "./pages/Auth/UpdatePassword";
 import InicioPage from "./pages/Inicio/Inicio";
+import SubmenuPage from "./pages/Inicio/Submenu";
 import ParametrosListPage from "./pages/Parametros/ParametrosList";
 import ParametrosDetailPage from "./pages/Parametros/ParametrosDetail";
 import PerfilesListPage from "./pages/Perfiles/PerfilesList";
@@ -57,6 +58,7 @@ function App() {
             <Route path="auditorias/:id" element={<AuditoriasDetailPage />} />
             <Route path="auditorias" element={<AuditoriasListPage />} />
             <Route path="" exact element={<InicioPage />} />
+            <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>
         </Routes>
       </Router>

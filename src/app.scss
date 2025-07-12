@@ -34,14 +34,19 @@ body {
 :where(.ant-menu).ant-menu-dark .ant-menu-item-selected,
 :where(.ant-menu-submenu-popup).ant-menu-dark .ant-menu-item-selected {
   background-color: transparent;
-
-
 }
-
+.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline, .ant-menu-dark>.ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+    background: #b5000b;
+}
 :where(.ant-menu-dark) .ant-menu-item,
 :where(.ant-menu-dark) .ant-menu-item-group-title,
 :where(.ant-menu-dark) .ant-menu-item>a,
-:where(.ant-menu-dark) .ant-menu-item>span>a {
+:where(.ant-menu-dark) .ant-menu-item>span>a, 
+:where(.ant-menu-dark) .ant-menu-item>span>.parent {
+  color: rgb(255 255 255) !important;
+  text-decoration: none;
+}
+:where(.ant-menu-dark) .ant-menu-title-content>.parent {
   color: rgb(255 255 255) !important;
   text-decoration: none;
 }

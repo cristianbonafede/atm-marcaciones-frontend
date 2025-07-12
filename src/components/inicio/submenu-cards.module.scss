@@ -1,0 +1,43 @@
+.section {
+  margin-bottom: 30px;
+
+  > .title {
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    color: #b5000b;
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #fff;
+}
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+}
+.icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #b5000b;
+  background-color: rgba(115, 103, 240, 0.12);
+  border-radius: 100px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
