@@ -1,0 +1,60 @@
+.ant-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  height: 41px;
+  width: 130px;
+
+  &.ant-btn-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  &.ant-btn-primary {
+    border-color: #b5000b !important;
+    background-color: #b5000b !important;
+
+    &:hover {
+      -webkit-box-shadow: 0 8px 25px -8px linear-gradient(to right, #b5000b, #660006) ;
+      box-shadow: 0 8px 25px -8px linear-gradient(to right, #b5000b, #660006) ;
+    }
+  }
+
+  &.ant-btn-secondary {
+    border: 1px solid #82868b !important;
+    background-color: transparent;
+    color: #82868b;
+  }
+
+  &.ant-btn-danger {
+    border-color: #ea5455 !important;
+    background-color: #ea5455 !important;
+
+    &:hover {
+      -webkit-box-shadow: 0 8px 25px -8px #ea5455;
+      box-shadow: 0 8px 25px -8px #ea5455;
+    }
+  }
+
+  &.ant-btn-success {
+    background-color: #48cf85 !important;
+    border-color: #3ecd7d !important;
+    color: #fff !important;
+
+    &:hover {
+      -webkit-box-shadow: 0 8px 25px -8px #28c76f;
+      box-shadow: 0 8px 25px -8px #28c76f;
+    }
+  }
+
+  &.block {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

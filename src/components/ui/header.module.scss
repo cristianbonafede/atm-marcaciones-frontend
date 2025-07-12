@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+
+  >.data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    >.icon {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      color: #fff;
+      border-radius: 100px;
+      font-size: 30px;
+      margin-right: 25px;
+    }
+
+    >.info {
+      > .breadcrumb {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > .link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #888;
+          font-size: 13px;
+        }
+
+        > .separator {
+          display: flex;
+          align-items: center;
+          margin: 0 5px;
+          color: #888;
+          font-size: 13px;
+        }
+      }
+      >.title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #5e5873;
+      }
+    }
+  }
+
+  >.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+
+    >.buttonsFilter {
+    display: flex;
+
+    }
+
+    >* {
+      margin-left: 10px;
+    }
+  }
+
+}

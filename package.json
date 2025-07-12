@@ -1,0 +1,55 @@
+{
+  "name": "marcaciones",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@whiteyin/react-viewer": "^1.0.10",
+    "antd": "^5.26.4",
+    "axios": "^1.10.0",
+    "html-react-parser": "^5.2.5",
+    "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
+    "react": "^19.1.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "react-input-mask": "^2.0.4",
+    "react-loading": "^2.0.3",
+    "react-router-dom": "^7.6.3",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "sass": "^1.89.2",
+    "simplebar": "^6.3.2",
+    "simplebar-react": "^3.3.2",
+    "spinners-react": "^1.0.11",
+    "sweetalert": "^2.1.2",
+    "web-vitals": "^5.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

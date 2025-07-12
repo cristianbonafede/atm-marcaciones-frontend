@@ -1,0 +1,49 @@
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+}
+
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: #d8d6de;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: linear-gradient(to right, #b5000b, #660006) ;
+  -webkit-box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+  box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: rgba(115, 103, 240, 0.12);
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-state {
+  color: linear-gradient(to right, #b5000b, #660006) ;
+}
+
+.ant-select-multiple .ant-select-selection-item {
+  background-color: linear-gradient(to right, #b5000b, #660006) ;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  color: #5e5873;
+  background: transparent;
+  cursor: initial;
+}
+
+.ant-select-multiple.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background: transparent;
+}
+
+.ant-select-disabled.ant-select-multiple .ant-select-selection-item {
+  background-color: linear-gradient(to right, #b5000b, #660006) ;
+  color: #fff;
+  cursor: initial;
+}
+
+.ant-select-multiple .ant-select-selection-item-remove {
+  color: #fff;
+}

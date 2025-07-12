@@ -1,0 +1,17 @@
+.ant-tabs-tab.ant-tabs-tab-active {
+  >.ant-tabs-tab-btn {
+    color: #b5000b !important; 
+    font-weight: 500;
+  }
+}
+:where(.css-dev-only-do-not-override-pjilya).ant-tabs .ant-tabs-tab:hover
+
+.ant-tabs-tab {
+  &:hover {
+    color: #b5000b;
+  }
+}
+
+.ant-tabs-ink-bar {
+  background-color: #b5000b !important;
+}

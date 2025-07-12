@@ -1,0 +1,35 @@
+.ant-tag {
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ant-tag-green {
+  color: #fff;
+  background: #28c76f;
+  border-color: #28c76f;
+
+  &.glow {
+    box-shadow: 0 0 10px #28c76f;
+  }
+}
+
+.ant-tag-red {
+  color: #fff;
+  background: #ea5455;
+  border-color: #ea5455;
+
+  &.glow {
+    box-shadow: 0 0 10px #ea5455;
+  }
+}
+
+.ant-tag-gold {
+  color: #fff;
+  background: #ff9f43;
+  border-color: #ff9f43;
+
+  &.glow {
+    box-shadow: 0 0 10px #ff9f43;
+  }
+}

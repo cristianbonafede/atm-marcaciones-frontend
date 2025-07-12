@@ -1,0 +1,43 @@
+.ant-input,
+.ant-input-affix-wrapper {
+  padding: 6px 14px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+
+  &:hover {
+    border: 1px solid #d8d6de;
+  }
+
+  &:focus {
+    background-color: #fff;
+    border-color: linear-gradient(to right, #b5000b, #660006) ;
+    -webkit-box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+    box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+  }
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #d8d6de;
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: linear-gradient(to right, #b5000b, #660006) ;
+  box-shadow: none;
+}
+
+.ant-input-textarea {
+  margin-bottom: 20px;
+}
+
+.ant-input[disabled] {
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #fff;
+  box-shadow: none;
+  cursor: initial;
+}
+
+input[type="file"] {
+  display: none !important;
+}

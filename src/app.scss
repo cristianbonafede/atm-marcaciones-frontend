@@ -1,0 +1,102 @@
+@import "antd/dist/reset.css";
+@import "simplebar/dist/simplebar.min.css";
+@import "react-toastify/dist/ReactToastify.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,200;1,400;1,500;1,600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px;
+  line-height: 1.5715;
+  font-feature-settings: "tnum";
+  background-color: #fff;
+  color: #000000d9 !important;
+}
+
+// Aumentar especificidad para antd v5 selectors
+:where(.ant-layout-sider) {
+  background: linear-gradient(to right, #b5000b, #660006) !important;
+}
+
+:where(.ant-menu).ant-menu-dark {
+  background: linear-gradient(to right, #b5000b, #660006) !important;
+}
+
+:where(.ant-layout-header) {
+  background: linear-gradient(to right, #b5000b, #660006) !important;
+}
+
+:where(.ant-menu-dark):where(.ant-menu-dark):not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #b5000b;
+}
+
+:where(.ant-menu).ant-menu-dark .ant-menu-item-selected,
+:where(.ant-menu-submenu-popup).ant-menu-dark .ant-menu-item-selected {
+  background-color: transparent;
+
+
+}
+
+:where(.ant-menu-dark) .ant-menu-item,
+:where(.ant-menu-dark) .ant-menu-item-group-title,
+:where(.ant-menu-dark) .ant-menu-item>a,
+:where(.ant-menu-dark) .ant-menu-item>span>a {
+  color: rgb(255 255 255) !important;
+  text-decoration: none;
+}
+
+.fadeIn {
+  animation: 0.5s fadeIn forwards;
+}
+
+.ant-layout-sider-trigger {
+  background: linear-gradient(to right, #b5000b, #660006) !important;
+}
+
+
+.fadeOut {
+  animation: 0.5s fadeOut forwards;
+}
+
+.icon-img {
+  width: 60px;
+}
+
+.anticon {
+  >.icon-img {
+    width: 20px;
+  }
+
+}
+
+// Forzar Montserrat en todo el proyecto, compatible con antd v5
+:where(html),
+:where(body),
+:where(#root) {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(-20px, 0);
+    opacity: 0;
+  }
+}

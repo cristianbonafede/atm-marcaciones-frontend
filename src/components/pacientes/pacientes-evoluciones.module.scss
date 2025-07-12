@@ -1,0 +1,42 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+
+  >.results {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+
+    >.select {
+      margin: 0 10px;
+      font-size: 12px;
+      border: none !important;
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 290px);
+
+  >img {
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  >.title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  >.description {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}

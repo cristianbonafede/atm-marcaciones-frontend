@@ -1,0 +1,49 @@
+.ant-picker {
+  width: 100%;
+  padding: 6px 14px;
+  background-color: #fff;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+
+  &:hover {
+    border: 1px solid #d8d6de;
+  }
+
+  &.ant-picker-focused {
+    border-color: linear-gradient(to right, #b5000b, #660006) ;
+    -webkit-box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+    box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+  }
+}
+
+.ant-picker-month-btn {
+  text-transform: capitalize;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  background: linear-gradient(to right, #b5000b, #660006) ;
+}
+
+.ant-picker-cell-inner {
+  text-transform: capitalize;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+  border: 1px solid linear-gradient(to right, #b5000b, #660006) ;
+}
+
+.ant-picker-today-btn {
+  color: linear-gradient(to right, #b5000b, #660006) ;
+}
+
+.ant-picker-content {
+  th {
+    text-transform: capitalize;
+  }
+}
+
+.ant-picker-header-view button:hover {
+  color: linear-gradient(to right, #b5000b, #660006) ;
+}

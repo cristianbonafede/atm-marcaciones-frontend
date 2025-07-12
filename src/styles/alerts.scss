@@ -1,0 +1,30 @@
+.alert {
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+
+  &.warning {
+    color: #ff9f43 !important;
+    background: rgba(255, 159, 67, 0.12) !important;
+    box-shadow: 0 6px 15px -7px rgb(255 159 67 / 40%);
+  }
+
+  > .title {
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+
+    > .icon {
+      margin-right: 5px;
+    }
+  }
+
+  > .description {
+    font-size: 12px;
+    text-align: center;
+  }
+}

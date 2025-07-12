@@ -1,0 +1,17 @@
+.ant-menu-item-group-title {
+  color: #840008;
+  font-weight: bold;
+}
+
+.ant-menu.ant-menu-inline-collapsed .ant-menu-item-group-title {
+  text-align: center;
+}
+
+.activeLink {
+  color: #840008;
+  box-sizing: border-box;
+}
+
+.ant-menu-item::after {
+  border-right: 0px !important;
+}

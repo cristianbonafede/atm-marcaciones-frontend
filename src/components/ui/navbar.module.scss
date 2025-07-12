@@ -1,0 +1,44 @@
+.navbar {
+  height: 62px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 11px 20px;
+  // border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px 0 #0000000d;
+  box-shadow: 0 1px 2px 0 #0000000d;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  >.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer !important;
+
+    >.data {
+      text-align: right;
+      margin-right: 10px;
+
+      >.name {
+        font-weight: 600;
+        color: #6e6b7b;
+      }
+
+      >.company {
+        font-size: 12px;
+        color: #6e6b7b;
+      }
+    }
+
+    >.image {
+      height: 40px;
+      color: "#6e6b7b";
+      border-radius: 100px;
+      border: 1px solid #f1f1f1;
+    }
+  }
+}

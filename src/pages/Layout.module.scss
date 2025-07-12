@@ -1,0 +1,19 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  // background-color: #f8f8f8;
+  background-color: #ebebeb;
+
+  .main {
+    height: inherit;
+    flex: 1;
+    min-width: 0;
+    // padding: 20px 28px;
+
+    .outlet {
+      padding: 12px 24px;
+    }
+  }
+
+}
