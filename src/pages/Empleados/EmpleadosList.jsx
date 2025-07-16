@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, Tag } from "antd";
 import { FaDotCircle, FaEdit, FaSearch } from "react-icons/fa";
@@ -19,37 +19,44 @@ const EmpleadosListPage = () => {
   let navigate = useNavigate();
 
   const title = "Empleados";
-  const icon = <img className="icon-img" src={iconTeam}/>;
+  const icon = <img className="icon-img" src={iconTeam} />;
 
   const breadcrumb = [{ title: "Empleados", url: "/empleados" }];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);
-  const filters = [
+  const [filters, setFilters] = useState([
     {
       type: "input",
       label: "Nombre",
-      name: "nombre",
+      name: "name",
     },
     {
       type: "input",
       label: "Apellido",
-      name: "apellido",
+      name: "lastname",
     },
     {
       type: "input",
       label: "N° Documento",
-      name: "numeroDocumento",
+      name: "documentNumber",
     },
     {
-      type: "input",
+      type: "select",
       label: "Ocupación",
-      name: "ocupacion",
+      name: "occupationId",
+      values: [],
     },
     {
-      type: "input",
+      type: "select",
       label: "Categoría",
-      name: "categoriaEmpleado",
+      name: "workerCategoryId",
+      values: [],
+    },
+    {
+      type: "number",
+      label: "Legajo",
+      name: "number",
     },
     {
       type: "select",
@@ -61,23 +68,59 @@ const EmpleadosListPage = () => {
         { text: "Inactivo", value: 0 },
       ],
     },
-  ];
+  ]);
 
   const columns = [
-    { title: "Nombre", property: "nombre", sortable: true },
-    { title: "Apellido", property: "apellido", sortable: true },
-    { title: "Calificación", property: "calificacion", sortable: true },
-    { title: "Legajo", property: "legajoNumero", sortable: true },
-    { title: "N° Documento", property: "numeroDocumento", sortable: true },
-    { title: "Ocupación", property: "ocupacion", sortable: true },
-    { title: "Categoría", property: "categoriaEmpleado", sortable: true },
+    { title: "Nombre", property: "name", sortable: true },
+    { title: "Apellido", property: "lastname", sortable: true },
+    { title: "Calificación", property: "calification", sortable: true },
+    { title: "Legajo", property: "number", sortable: true },
+    { title: "N° Documento", property: "documentNumber", sortable: true },
+    { title: "Ocupación", property: "occupation", sortable: true },
+    { title: "Categoría", property: "workerCategory", sortable: true },
     {
       title: "Estado",
-      property: "estado",
+      property: "status",
       sortable: true,
-      render: (item) => <EmpleadosEstado estado={item.estado} />,
+      render: (item) => <EmpleadosEstado estado={item.status} />,
     },
   ];
+  useEffect(() => {
+    async function getData() {
+
+      let response = await http.get("occupations?Page=1&PageSize=10000");
+      if (response) {
+        let data = response.data.list;
+        data = data.map((item) => {
+          return {
+            value: item.occupationId,
+            text: item.name,
+          };
+        });
+
+        let nFilters = [...filters];
+        nFilters[3] = { ...nFilters[3], values: data };
+        setFilters(nFilters);
+
+      }
+      response = await http.get("workercategories?Page=1&PageSize=10000");
+      if (response) {
+        let data = response.data.list;
+        data = data.map((item) => {
+          return {
+            value: item.workerCategoryId,
+            text: item.name,
+          };
+        });
+
+        let nFilters = [...filters];
+        nFilters[4] = { ...nFilters[4], values: data };
+        setFilters(nFilters);
+
+      }
+    }
+    getData();
+  }, []);
 
   const menu = (item) => (
     <Menu>
@@ -140,7 +183,7 @@ const EmpleadosListPage = () => {
 
   const onClickExportarExcel = async (e) => {
     setLoadingExport(true);
-    let url = `empleados/export?`;
+    let url = `workers/export?`;
 
     for (const property in e.filters) {
       url += `&${property}=${e.filters[property] ?? ""}`;
@@ -193,7 +236,7 @@ const EmpleadosListPage = () => {
           id="table-empleados"
           columns={columns}
           menu={menu}
-          url="/empleados"
+          url="/workers"
           orderBy="nombre"
           orderDirection="ascending"
           setIsFilter={setIsFilter}

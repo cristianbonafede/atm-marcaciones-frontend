@@ -38,6 +38,7 @@ import PacientesListPage from "./pages/Pacientes/PacientesList";
 import SucursalesPage from "./pages/Sucursales/Sucursales";
 import EmpleadosListPage from "./pages/Empleados/EmpleadosList";
 import EmpleadosDetailPage from "./pages/Empleados/EmpleadosDetail";
+import SectoresListPage from "./pages/Sectores/SectoresList";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="sucursales" element={<SucursalesPage />} />
+            <Route path="reporte/sectores" element={<SectoresListPage />} />
             <Route path="" exact element={<InicioPage />} />
             <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>

@@ -62,6 +62,7 @@ const Filters = (props) => {
 
   useEffect(() => {
     updateFiledFilters();
+    console.log("Filters updated", context.filters);
   }, [context.filtersVisible, context.filters]);
   return (
     <div style={{ marginBottom: 24 }}>
@@ -90,7 +91,7 @@ const Filters = (props) => {
                 {item.type === "select" && !item.hidden && (
                   <Form.Item label={item.label} name={item.name}>
                     <Select allowClear showSearch optionFilterProp="children" onChange={item.onChange ? (value) => item.onChange(value, form) : undefined}>
-                      {item.values.map((option, index) => (
+                      {item.values?.map((option, index) => (
                         <Select.Option key={index} value={option.value}>
                           {option.text}
                         </Select.Option>

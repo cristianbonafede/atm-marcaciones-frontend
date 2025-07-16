@@ -46,7 +46,7 @@ const menuConfig = [
         label: "Empleados",
         icon: <FaUsers />,
         children: [
-            { label: "Lista de empleados", path: "/empleados/lista", icon: <FaUsers /> },
+            { label: "Lista de empleados", path: "/empleados", icon: <FaUsers /> },
             { label: "Accidentes", path: "/empleados/accidentes", icon: <FaHospital /> },
             { label: "Autorizaciones de horas extras", path: "/empleados/autorizaciones", icon: <FaCheckCircle /> },
             { label: "Licencias", path: "/empleados/licencias", icon: <FaRegCalendarCheck /> },
