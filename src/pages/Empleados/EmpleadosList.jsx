@@ -12,69 +12,76 @@ import Card from "./../../components/ui/card";
 import Header from "../../components/ui/header";
 import Filters from "./../../components/ui/filters";
 import Table from "../../components/ui/table";
-import UsuariosEstado from "./../../components/usuarios/usuarios-estado";
+import EmpleadosEstado from "./../../components/empleados/empleados-estado";
 import iconTeam from "./../../assets/images/team.png";
 
-const UsuariosListPage = () => {
+const EmpleadosListPage = () => {
   let navigate = useNavigate();
 
-  const title = "Usuarios";
-  const icon = <img className="icon-img" src={iconTeam}/>; 
+  const title = "Empleados";
+  const icon = <img className="icon-img" src={iconTeam}/>;
 
-  const breadcrumb = [{ title: "Usuarios", url: "/usuarios" }];
+  const breadcrumb = [{ title: "Empleados", url: "/empleados" }];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);
   const filters = [
     {
       type: "input",
-      label: "Dni",
-      name: "dni",
-    },
-    {
-      type: "input",
       label: "Nombre",
       name: "nombre",
     },
-
     {
       type: "input",
-      label: "Nombre de Usuario",
-      name: "nombreUsuario",
+      label: "Apellido",
+      name: "apellido",
     },
     {
       type: "input",
-      label: "Especialidad",
-      name: "especialidad",
+      label: "N° Documento",
+      name: "numeroDocumento",
+    },
+    {
+      type: "input",
+      label: "Ocupación",
+      name: "ocupacion",
+    },
+    {
+      type: "input",
+      label: "Categoría",
+      name: "categoriaEmpleado",
+    },
+    {
+      type: "select",
+      label: "Estado",
+      name: "estado",
+      values: [
+        { text: "Todos", value: "" },
+        { text: "Activo", value: 1 },
+        { text: "Inactivo", value: 0 },
+      ],
     },
   ];
 
   const columns = [
-    { title: "Dni", property: "dni", sortable: false },
-    { title: "Nombre", property: "nombre", sortable: false },
-    { title: "Nombre de Usuario", property: "nombreUsuario", sortable: false },
-    { title: "Especialidad", property: "especialidad", sortable: true },
-    {
-      title: "Perfiles",
-      property: "perfiles",
-      sortable: false,
-      render: (item) => {
-        return item.perfiles?.split(",").map(d =>
-          <Tag color="lime">{d}</Tag>
-        )
-      }
-    },
+    { title: "Nombre", property: "nombre", sortable: true },
+    { title: "Apellido", property: "apellido", sortable: true },
+    { title: "Calificación", property: "calificacion", sortable: true },
+    { title: "Legajo", property: "legajoNumero", sortable: true },
+    { title: "N° Documento", property: "numeroDocumento", sortable: true },
+    { title: "Ocupación", property: "ocupacion", sortable: true },
+    { title: "Categoría", property: "categoriaEmpleado", sortable: true },
     {
       title: "Estado",
-      property: "habilitado",
-      sortable: false,
-      render: (item) => <UsuariosEstado estado={item.habilitado} />,
+      property: "estado",
+      sortable: true,
+      render: (item) => <EmpleadosEstado estado={item.estado} />,
     },
   ];
 
   const menu = (item) => (
     <Menu>
-      {!hasPermission(actions.UsuariosEditar) && (
+      {!hasPermission(actions.EmpleadosEditar) && (
         <Menu.Item
           key="1"
           icon={<FaSearch />}
@@ -83,42 +90,36 @@ const UsuariosListPage = () => {
           Ver
         </Menu.Item>
       )}
-      {hasPermission(actions.UsuariosEditar) && (
+      {hasPermission(actions.EmpleadosEditar) && (
         <Menu.Item key="1" icon={<FaEdit />} onClick={() => onClickEdit(item)}>
           Editar
         </Menu.Item>
       )}
-      {hasPermission(actions.UsuariosEliminar) && (
+      {hasPermission(actions.EmpleadosEliminar) && (
         <Menu.Item
           key="2"
           icon={<FaDotCircle />}
           onClick={() => onClickDelete(item)}
         >
-          {item.habilitado && (
-            "Deshabilitar"
-          )}
-          {!item.habilitado && (
-            "Habilitar"
-          )}
+          {item.habilitado ? "Deshabilitar" : "Habilitar"}
         </Menu.Item>
       )}
     </Menu>
   );
 
   const onClickAdd = () => {
-    navigate("/usuarios/nuevo");
+    navigate("/empleados/nuevo");
   };
 
   const onClickEdit = (item) => {
-    navigate(`/usuarios/${item.id}`);
+    navigate(`/empleados/${item.id}`);
   };
 
   const onClickDelete = async (item) => {
-
     const confirmed = await confirm(
-      item.habilitado ? "Deshabilitar usuario" : "Habilitar usuario",
-      item.habilitado ? `¿Esta seguro que desea deshabilitar al usuario ${item.nombre}?` :
-        `¿Esta seguro que desea habilitar al usuario ${item.nombre}?`
+      item.habilitado ? "Deshabilitar empleado" : "Habilitar empleado",
+      item.habilitado ? `¿Esta seguro que desea deshabilitar al empleado ${item.nombre}?` :
+        `¿Esta seguro que desea habilitar al empleado ${item.nombre}?`
     );
 
     if (!confirmed) {
@@ -126,20 +127,20 @@ const UsuariosListPage = () => {
     }
 
     const response = await http.delete(
-      `usuarios/${item.id}`
+      `empleados/${item.id}`
     );
     if (response) {
       await modalSuccess(
-        "Usuario modificado",
-        "El usuario fue modificado exitosamente"
+        "Empleado modificado",
+        "El empleado fue modificado exitosamente"
       );
       navigate(0);
     }
   };
-  
+
   const onClickExportarExcel = async (e) => {
     setLoadingExport(true);
-    let url = `usuarios/export?`;
+    let url = `empleados/export?`;
 
     for (const property in e.filters) {
       url += `&${property}=${e.filters[property] ?? ""}`;
@@ -152,7 +153,7 @@ const UsuariosListPage = () => {
     const element = document.createElement("a");
     const file = new Blob([Uint8Array.from(base, (c) => c.charCodeAt(0))]);
     element.href = URL.createObjectURL(file);
-    element.download = "Pacientes.xlsx";
+    element.download = "Empleados.xlsx";
     document.body.appendChild(element);
     element.click();
     setLoadingExport(false);
@@ -160,19 +161,19 @@ const UsuariosListPage = () => {
 
   const buttons = [
     {
-      title: "Agregar Usuario",
+      title: "Agregar Empleado",
       text: "Nuevo",
       type: "primary",
       onClick: onClickAdd,
-      visible: hasPermission(actions.UsuariosCrear),
+      visible: hasPermission(actions.EmpleadosCrear),
     },
-        {
+    {
       title: "Exportar a Excel",
       text: "Exportar",
       type: "primary",
       onClick: onClickExportarExcel,
       loading: loadingExport,
-      visible: hasPermission(actions.UsuariosVer),
+      visible: hasPermission(actions.EmpleadosVer),
     },
   ];
 
@@ -189,10 +190,10 @@ const UsuariosListPage = () => {
         />
         <Filters fields={filters} />
         <Table
-          id="table-usuarios"
+          id="table-empleados"
           columns={columns}
           menu={menu}
-          url="/usuarios"
+          url="/empleados"
           orderBy="nombre"
           orderDirection="ascending"
           setIsFilter={setIsFilter}
@@ -202,4 +203,4 @@ const UsuariosListPage = () => {
   );
 };
 
-export default UsuariosListPage;
+export default EmpleadosListPage;

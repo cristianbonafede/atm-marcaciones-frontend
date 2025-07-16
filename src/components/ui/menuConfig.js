@@ -7,16 +7,16 @@ import {
     FaRegListAlt, FaHospital,
     FaBriefcase, FaCheckCircle,
     FaClock, FaCalendarAlt,
-    FaFileAlt, FaUserCheck,
+    FaUserCheck,
     FaUserTimes, FaExclamationTriangle,
     FaRegCalendarCheck, FaRegCalendarTimes,
     FaRegCalendarMinus, FaRegCalendarPlus,
     FaRegCalendar, FaRegFileAlt,
     FaRegAddressCard, FaRegUser,
     FaRegFolderOpen, FaRegEdit,
-    FaRegEnvelope, FaRegStar,
+    FaRegStar,
     FaRegBell, FaRegBuilding,
-    FaRegChartBar, FaRegUserCircle,
+    FaRegUserCircle,
     FaRegFileExcel, FaFileCsv,
     FaRegFile, FaRegListAlt as FaListAlt2
 } from "react-icons/fa";
@@ -76,7 +76,7 @@ const menuConfig = [
         label: "Usuarios",
         icon: <FaUserShield />,
         children: [
-            { label: "Usuarios", path: "/usuarios/lista", icon: <FaUser /> },
+            { label: "Usuarios", path: "/usuarios", icon: <FaUser /> },
             { label: "Roles", path: "/usuarios/roles", icon: <FaUserShield /> },
             { label: "Permisos", path: "/usuarios/permisos", icon: <FaRegAddressCard /> },
             { label: "Registro de visitas", path: "/usuarios/visitas", icon: <FaRegListAlt /> },

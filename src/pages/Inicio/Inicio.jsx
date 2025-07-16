@@ -8,7 +8,7 @@ const InicioPage = () => {
   const navigate = useNavigate();
   return (
     <div className={classes.section}>
-      <div className={classes.title}>Menú principal</div>
+      <div className={classes.title}>Inicio</div>
       <Row gutter={[20, 20]}>
         {menuConfig.map((item) => (
           <Col key={item.label} xs={24} md={12} lg={6} xxl={4}>

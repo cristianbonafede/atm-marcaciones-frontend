@@ -1,0 +1,120 @@
+
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(181,0,11,0.08);
+  padding: 32px 24px 16px 24px;
+  margin: 32px auto;
+  max-width: 1100px;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(181,0,11,0.04);
+}
+.table th, .table td {
+  padding: 12px 10px;
+  text-align: left;
+}
+.table th {
+  font-size: 1.08rem;
+  font-weight: 700;
+  border-bottom: 2px solid #b5000b22;
+  background: #f8f8f8;
+  letter-spacing: 0.2px;
+}
+.table tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+.table tr:hover {
+  background: #fbeaec;
+}
+.table tr:last-child {
+  border-bottom: none;
+}
+.left-border {
+  border-left: 6px solid #1ecb4f !important;
+}
+.left-border-warning {
+  border-left: 6px solid #ffb300 !important;
+}
+.left-border-offline {
+  border-left: 6px solid #e74c3c !important;
+}
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(181,0,11,0.04);
+}
+.table tbody tr {
+  /* Para que el borde izquierdo se vea bien */
+  background-clip: padding-box;
+}
+.detallesBtn {
+  background: linear-gradient(to right, #b5000b, #660006);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(181,0,11,0.08);
+}
+.detallesBtn:hover {
+  background: linear-gradient(to right, #840008, #b5000b);
+  color: #fff;
+  box-shadow: 0 4px 16px -8px #b5000b44;
+}
+.referencias {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.08rem;
+  margin-top: 18px;
+}
+.refTitle {
+  margin-right: 10px;
+  font-weight: 600;
+  color: #b5000b;
+}
+.dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #b5000b22;
+}
+.online {
+  background: #1ecb4f;
+  border-color: #1ecb4f;
+}
+.warning {
+  background: #ffb300;
+  border-color: #ffb300;
+}
+.offline {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}

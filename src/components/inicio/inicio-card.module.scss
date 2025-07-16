@@ -11,6 +11,8 @@
   cursor: pointer;
   position: relative;
   min-width: 0;
+    color: rgba(0, 0, 0, 0.8509803922) !important;
+
 
   // Si la card NO tiene icono, centrar el texto verticalmente
   &.noIcon {
@@ -68,7 +70,6 @@
       background-color: #b5000b;
     }
     >.title {
-      color: #660006;
       font-weight: 600;
     }
   }

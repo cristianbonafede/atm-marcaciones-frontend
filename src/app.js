@@ -35,6 +35,9 @@ import "./styles/tabs.scss";
 import "./styles/tags.scss";
 import PacientesDetailPage from "./pages/Pacientes/PacientesDetail";
 import PacientesListPage from "./pages/Pacientes/PacientesList";
+import SucursalesPage from "./pages/Sucursales/Sucursales";
+import EmpleadosListPage from "./pages/Empleados/EmpleadosList";
+import EmpleadosDetailPage from "./pages/Empleados/EmpleadosDetail";
 
 function App() {
   return (
@@ -57,6 +60,9 @@ function App() {
             <Route path="usuarios" element={<UsuariosListPage />} />
             <Route path="auditorias/:id" element={<AuditoriasDetailPage />} />
             <Route path="auditorias" element={<AuditoriasListPage />} />
+            <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
+            <Route path="empleados" element={<EmpleadosListPage />} />
+            <Route path="sucursales" element={<SucursalesPage />} />
             <Route path="" exact element={<InicioPage />} />
             <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>
