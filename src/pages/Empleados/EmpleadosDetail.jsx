@@ -23,10 +23,10 @@ const EmpleadosDetailPage = () => {
   ];
 
   return (
-    <Card>
+    <div>
       <Header title={title} icon={icon} breadcrumb={breadcrumb} />
       <EmpleadosForm id={id} />
-    </Card>
+    </div>
   );
 };
 

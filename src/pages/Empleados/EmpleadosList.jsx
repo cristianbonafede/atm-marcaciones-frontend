@@ -60,12 +60,18 @@ const EmpleadosListPage = () => {
     },
     {
       type: "select",
+      label: "Sucursal",
+      name: "workplaceId",
+      values: [],
+    },
+    {
+      type: "select",
       label: "Estado",
       name: "estado",
       values: [
         { text: "Todos", value: "" },
-        { text: "Activo", value: 1 },
-        { text: "Inactivo", value: 0 },
+        { text: "Activo", value: 10 },
+        { text: "Inactivo", value: 5 },
       ],
     },
   ]);
@@ -88,36 +94,45 @@ const EmpleadosListPage = () => {
   useEffect(() => {
     async function getData() {
 
-      let response = await http.get("occupations?Page=1&PageSize=10000");
-      if (response) {
-        let data = response.data.list;
-        data = data.map((item) => {
-          return {
-            value: item.occupationId,
-            text: item.name,
-          };
-        });
+      const [
+      occupationsRes,
+      workercategoriesRes,
+      workplacesRes,
+    ] = await Promise.all([
+      http.get("occupations?Page=1&Size=10000"),
+      http.get("workercategories?Page=1&Size=10000"),
+      http.get("workplaces?Page=1&Size=10000"),
+    ]);
+    const newFilters = [...filters];
+    if (occupationsRes) {
+      newFilters[3] = {
+        ...newFilters[3],
+        values: occupationsRes.data.list.map((item) => ({
+          value: item.occupationId,
+          text: item.name,
+        })),
+      };
+    }
+    if (workercategoriesRes) {
+      newFilters[4] = {
+        ...newFilters[4],
+        values: workercategoriesRes.data.list.map((item) => ({
+          value: item.workercategoryId,
+          text: item.name,
+        })),
+      };
+    }
 
-        let nFilters = [...filters];
-        nFilters[3] = { ...nFilters[3], values: data };
-        setFilters(nFilters);
-
-      }
-      response = await http.get("workercategories?Page=1&PageSize=10000");
-      if (response) {
-        let data = response.data.list;
-        data = data.map((item) => {
-          return {
-            value: item.workerCategoryId,
-            text: item.name,
-          };
-        });
-
-        let nFilters = [...filters];
-        nFilters[4] = { ...nFilters[4], values: data };
-        setFilters(nFilters);
-
-      }
+    if (workplacesRes) {
+      newFilters[6] = {
+        ...newFilters[6],
+        values: workplacesRes.data.list.map((item) => ({
+          value: item.workplaceId,
+          text: item.name,
+        })),
+      };
+    }
+    setFilters(newFilters);
     }
     getData();
   }, []);
