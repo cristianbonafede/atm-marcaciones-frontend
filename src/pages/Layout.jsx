@@ -22,9 +22,11 @@ const LayoutPage = () => {
     <div className={classes.layout}>
       <Sidebar />
       <div className={classes.main}>
+      <SimpleBar style={{ maxHeight: "100vh" }}>
+          <div className={classes.main}>
+
         <Navbar />
-        <SimpleBar style={{ maxHeight: "100vh", width: "100%" }}>
-          <div className={classes.outlet}>
+
             <Outlet />
           </div>
         </SimpleBar>

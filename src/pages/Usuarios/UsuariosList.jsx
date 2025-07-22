@@ -28,32 +28,20 @@ const UsuariosListPage = () => {
   const filters = [
     {
       type: "input",
-      label: "Dni",
-      name: "dni",
+      label: "Id",
+      name: "id",
     },
     {
       type: "input",
-      label: "Nombre",
-      name: "nombre",
-    },
-
-    {
-      type: "input",
-      label: "Nombre de Usuario",
-      name: "nombreUsuario",
-    },
-    {
-      type: "input",
-      label: "Especialidad",
-      name: "especialidad",
+      label: "Username",
+      name: "username",
     },
   ];
 
   const columns = [
-    { title: "Dni", property: "dni", sortable: false },
-    { title: "Nombre", property: "nombre", sortable: false },
-    { title: "Nombre de Usuario", property: "nombreUsuario", sortable: false },
-    { title: "Especialidad", property: "especialidad", sortable: true },
+    { title: "Id", property: "id", sortable: false },
+    { title: "Username", property: "username", sortable: false },
+    { title: "Email", property: "email", sortable: false },
     {
       title: "Perfiles",
       property: "perfiles",

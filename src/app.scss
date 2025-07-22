@@ -57,6 +57,12 @@ body {
 
 .ant-layout-sider-trigger {
   background: linear-gradient(to right, #b5000b, #660006) !important;
+  height: 62px !important;
+}
+
+.ant-select-outlined.ant-select-multiple .ant-select-selection-item {
+    background: rgb(181 0 11);
+    border: 1px solid transparent;
 }
 
 

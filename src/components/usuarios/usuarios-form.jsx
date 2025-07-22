@@ -83,29 +83,7 @@ const UsuariosForm = (props) => {
     <Form layout="vertical" form={form} onFinish={onClickSave}>
       <Row gutter={16}>
         <Col xs={12}>
-          <Form.Item label="Nombre" name="nombre" rules={[required]}>
-            <Input disabled={disabled} />
-          </Form.Item>
-        </Col>
-        <Col xs={12}>
-          <Form.Item label="Apellido" name="apellido" rules={[required]}>
-            <Input disabled={disabled} />
-          </Form.Item>
-        </Col>
-        <Col xs={12}>
-          <Form.Item label="Dni" name="dni" rules={[required]}>
-            <Input disabled={disabled} />
-          </Form.Item>
-        </Col>
-        <Col xs={12}>
-          <Form.Item label="Especialidad" name="especialidad" >
-            <Input disabled={disabled} />
-          </Form.Item>
-        </Col>
-
-
-        <Col xs={12}>
-          <Form.Item label="Nombre de Usuario" name="nombreUsuario" rules={[required]}>
+          <Form.Item label="Username" name="username" rules={[required]}>
             <Input disabled={disabled} />
           </Form.Item>
         </Col>
@@ -116,7 +94,7 @@ const UsuariosForm = (props) => {
         </Col>
 
         <Col xs={24}>
-          <Form.Item label="Email" name="emailPersonal" rules={[required]}>
+          <Form.Item label="Email" name="email" rules={[required]}>
             <Input disabled={disabled} />
           </Form.Item>
         </Col>

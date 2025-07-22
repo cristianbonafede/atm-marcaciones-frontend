@@ -77,8 +77,8 @@ const menuConfig = [
         icon: <FaUserShield />,
         children: [
             { label: "Usuarios", path: "/usuarios", icon: <FaUser /> },
-            { label: "Roles", path: "/usuarios/roles", icon: <FaUserShield /> },
-            { label: "Permisos", path: "/usuarios/permisos", icon: <FaRegAddressCard /> },
+            { label: "Perfiles", path: "/perfiles", icon: <FaUserShield /> },
+            // { label: "Permisos", path: "/usuarios/permisos", icon: <FaRegAddressCard /> },
             { label: "Registro de visitas", path: "/usuarios/visitas", icon: <FaRegListAlt /> },
             { label: "Usuarios activos", path: "/usuarios/activos", icon: <FaUserCheck /> },
         ],

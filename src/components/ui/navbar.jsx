@@ -16,8 +16,9 @@ const Navbar = () => {
   const [usuario, setUsuario] = useState();
 
   useEffect(() => {
-    // const token = jwtDecode(sessionStorage.getItem("token"));
-    // setUsuario(token.nombre);
+    const token = jwtDecode(sessionStorage.getItem("token"));
+    console.log(token);
+    setUsuario(token.nombre);
   }, []);
 
   const onClickLogout = async () => {
