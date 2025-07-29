@@ -27,38 +27,37 @@ const SectoresListPage = () => {
   const [filters, setFilters] = useState([
     { type: "input", label: "Nombre", name: "name" },
     { type: "select", label: "Categoría", name: "crewCategoryId", values: [] },
-    { type: "select", label: "Lugar de trabajo", name: "workplaceId", values: [] },
-    { type: "select", label: "Horario", name: "workingHourId", values: [] },
-    { type: "select", label: "Dedicación", name: "dedicationId", values: [] },
+    { type: "select", label: "Sucursal", name: "workplaceId", values: [] },
+    // { type: "select", label: "Horario", name: "workingHourId", values: [] },
+    // { type: "select", label: "Dedicación", name: "dedicationId", values: [] },
     { type: "select", label: "Jefe", name: "bossId", values: [] },
-    { type: "select", label: "Sector padre", name: "parentId", values: [] },
+    // { type: "select", label: "Sector padre", name: "parentId", values: [] },
   ]);
 
   const columns = [
     { title: "Nombre", property: "name", sortable: true },
     { title: "Categoría", property: "crewCategory", sortable: true },
     { title: "Sucursal", property: "workplace", sortable: true },
-    // { title: "Horario", property: "workingHour", sortable: true },
-    // { title: "Dedicación", property: "dedication", sortable: true },
-    // { title: "Jefe", property: "boss", sortable: true },
-    // { title: "Sector padre", property: "parent", sortable: true },
+    { title: "Horario", property: "workingHour", sortable: true },
+    { title: "Dedicación", property: "dedication", sortable: true },
+    { title: "Sector padre", property: "parent", sortable: true },
   ];
 useEffect(() => {
   async function getData() {
     const [
       crewCategoriesRes,
       workplacesRes,
-      workingHoursRes,
+      bossesRes,
       dedicationsRes,
       crewsRes,
       workersRes,
     ] = await Promise.all([
       http.get("crewcategories?Page=1&PageSize=10000"),
       http.get("workplaces?Page=1&Size=10000"),
-      http.get("workinghours?Page=1&PageSize=10000"),
-      http.get("dedications?Page=1&PageSize=10000"),
-      http.get("crews?Page=1&PageSize=10000"),
-      http.get("workers?Page=1&PageSize=10000"),
+      http.get("crews/bosses"),
+      // http.get("dedications?Page=1&PageSize=10000"),
+      // http.get("crews?Page=1&PageSize=10000"),
+      // http.get("workers?Page=1&PageSize=10000"),
     ]);
     const newFilters = [...filters];
     if (crewCategoriesRes) {
@@ -80,45 +79,45 @@ useEffect(() => {
       };
     }
 
-    if (workingHoursRes) {
+    if (bossesRes) {
       newFilters[3] = {
         ...newFilters[3],
-        values: workingHoursRes.data.list.map((item) => ({
-          value: item.workingHourId,
-          text: item.name,
-        })),
-      };
-    }
-
-    if (dedicationsRes) {
-      newFilters[4] = {
-        ...newFilters[4],
-        values: dedicationsRes.data.list.map((item) => ({
-          value: item.dedicationId,
-          text: item.name,
-        })),
-      };
-    }
-
-    if (workersRes) {
-      newFilters[5] = {
-        ...newFilters[5],
-        values: workersRes.data.list.map((item) => ({
+        values: bossesRes.data.map((item) => ({
           value: item.id,
-          text: item.nombre,
-        })),
-      };
-    }
-
-    if (crewsRes) {
-      newFilters[6] = {
-        ...newFilters[6],
-        values: crewsRes.data.list.map((item) => ({
-          value: item.Id,
           text: item.name,
         })),
       };
     }
+
+    // if (dedicationsRes) {
+    //   newFilters[4] = {
+    //     ...newFilters[4],
+    //     values: dedicationsRes.data.list.map((item) => ({
+    //       value: item.dedicationId,
+    //       text: item.name,
+    //     })),
+    //   };
+    // }
+
+    // if (workersRes) {
+    //   newFilters[5] = {
+    //     ...newFilters[5],
+    //     values: workersRes.data.list.map((item) => ({
+    //       value: item.id,
+    //       text: item.nombre,
+    //     })),
+    //   };
+    // }
+
+    // if (crewsRes) {
+    //   newFilters[6] = {
+    //     ...newFilters[6],
+    //     values: crewsRes.data.list.map((item) => ({
+    //       value: item.Id,
+    //       text: item.name,
+    //     })),
+    //   };
+    // }
 
     setFilters(newFilters);
   }
@@ -146,10 +145,11 @@ useEffect(() => {
     </Menu>
   );
   const onClickAdd = () => {
-    navigate("/sectores/nuevo");
+    navigate("/reportes/sectores/nuevo");
   };
   const onClickEdit = (item) => {
-    navigate(`/sectores/${item.Id}`);
+    console.log(item);
+    navigate(`/reportes/sectores/${item.id}`);
   };
   const onClickDelete = async (item) => {
     const confirmed = await confirm(

@@ -1,120 +1,106 @@
+// Sucursales.module.scss
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
 
-.container {
+.card {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(181,0,11,0.08);
-  padding: 32px 24px 16px 24px;
-  margin: 32px auto;
-  max-width: 1100px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 20px 18px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 8px solid #eee;
+  transition: box-shadow 0.2s;
 }
-.title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  letter-spacing: 0.5px;
+
+.cardOnline { border-left-color: #27ae60; }
+.cardWarning { border-left-color: #f39c12; }
+.cardOffline { border-left-color: #e74c3c; }
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  margin-bottom: 10px;
 }
-.table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 24px;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(181,0,11,0.04);
+
+.estado {
+  font-size: 1.3em;
 }
-.table th, .table td {
-  padding: 12px 10px;
-  text-align: left;
+
+.cardBody {
+  margin-bottom: 12px;
+  line-height: 1.7;
 }
-.table th {
-  font-size: 1.08rem;
-  font-weight: 700;
-  border-bottom: 2px solid #b5000b22;
-  background: #f8f8f8;
-  letter-spacing: 0.2px;
+
+.porcentaje {
+  font-weight: bold;
+  margin-left: 6px;
 }
-.table tr {
-  border-bottom: 1px solid #f0f0f0;
-  transition: background 0.2s;
-}
-.table tr:hover {
-  background: #fbeaec;
-}
-.table tr:last-child {
-  border-bottom: none;
-}
-.left-border {
-  border-left: 6px solid #1ecb4f !important;
-}
-.left-border-warning {
-  border-left: 6px solid #ffb300 !important;
-}
-.left-border-offline {
-  border-left: 6px solid #e74c3c !important;
-}
-.table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-bottom: 24px;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(181,0,11,0.04);
-}
-.table tbody tr {
-  /* Para que el borde izquierdo se vea bien */
-  background-clip: padding-box;
-}
-.detallesBtn {
-  background: linear-gradient(to right, #b5000b, #660006);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 7px 18px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(181,0,11,0.08);
-}
-.detallesBtn:hover {
-  background: linear-gradient(to right, #840008, #b5000b);
-  color: #fff;
-  box-shadow: 0 4px 16px -8px #b5000b44;
-}
+
 .referencias {
   display: flex;
   align-items: center;
   gap: 18px;
-  font-size: 1.08rem;
-  margin-top: 18px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin-top: 32px;
+  font-size: 1em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
+
 .refTitle {
+  font-weight: bold;
   margin-right: 10px;
-  font-weight: 600;
-  color: #b5000b;
 }
+
+.refOnline, .refWarning, .refOffline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .dot {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  margin-right: 6px;
+  margin-right: 4px;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 2px #bbb;
   vertical-align: middle;
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 2px #b5000b22;
 }
-.online {
-  background: #1ecb4f;
-  border-color: #1ecb4f;
+.online { background: #27ae60; }
+.warning { background: #f39c12; }
+.offline { background: #e74c3c; }
+
+// Botón moderno y sobrio
+.detallesBtn {
+  background: transparent;
+  color: #3498db;
+  border: 1.5px solid #3498db;
+  border-radius: 6px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 0.98em;
+  margin-top: 8px;
+  transition: 
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-shadow: none;
 }
-.warning {
-  background: #ffb300;
-  border-color: #ffb300;
-}
-.offline {
-  background: #e74c3c;
-  border-color: #e74c3c;
+.detallesBtn:hover {
+  background: rgba(52, 152, 219, 0.07);
+  color: #217dbb;
+  border-color: #217dbb;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.07);
 }

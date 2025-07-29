@@ -38,7 +38,7 @@ const menuConfig = [
         ],
     },
     {
-        label: "Sucursales",
+        label: "Sucursales Activas",
         path: "/sucursales",
         icon: <FaBuilding />
     },

@@ -14,7 +14,7 @@ const LayoutPage = () => {
     const token = getToken();
 
     if (!token) {
-      // window.location.replace("/auth/login");
+      window.location.replace("/auth/login");
     }
   }, []);
 

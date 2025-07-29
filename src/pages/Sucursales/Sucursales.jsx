@@ -2,61 +2,63 @@ import React, { useEffect, useState } from 'react';
 import styles from './Sucursales.module.scss';
 import http from '../../services/http';
 
+const Spinner = () => (
+  <div className={styles.spinnerContainer}>
+    <div className={styles.spinner}></div>
+    <span>Cargando sucursales...</span>
+  </div>
+);
+
+const estadoColor = {
+  online: styles.cardOnline,
+  warning: styles.cardWarning,
+  offline: styles.cardOffline,
+};
 
 const SucursalesPage = () => {
-
   const [sucursalesData, setSucursalesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getData() {
-        const response = await http.get("sucursales");
-  
-        if (response) {
-          const data = response.data;
- 
-          setSucursalesData(data);
-        }
+      setLoading(true);
+      const response = await http.get("sucursales");
+      if (response) {
+        const data = response.data;
+        setSucursalesData(data);
       }
-  
-      getData();
-    }, []);
-  
+      setLoading(false);
+    }
+    getData();
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Sucursales activas</h2>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Sucursal</th>
-            <th>Admin</th>
-            <th>Ahora</th>
-            <th>%</th>
-            <th>Hoy</th>
-            <th>%</th>
-            <th>Asignados</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {sucursalesData.map((sucursal, idx) => {
-            let rowClass = '';
-            if (sucursal.estado === 'online') rowClass = styles['left-border'];
-            else if (sucursal.estado === 'warning') rowClass = styles['left-border-warning'];
-            else if (sucursal.estado === 'offline') rowClass = styles['left-border-offline'];
-            return (
-              <tr key={idx} >
-                <td className={rowClass}><b>{sucursal.nombre}</b></td>
-                <td>{sucursal.admin}</td>
-                <td>{sucursal.ahora}</td>
-                <td>{sucursal.porcentajeAhora}</td>
-                <td>{sucursal.hoy}</td>
-                <td>{sucursal.porcentajeHoy}</td>
-                <td>{sucursal.asignados}</td>
-                <td><button className={styles.detallesBtn}>Detalles</button></td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className={styles.cardsGrid}>
+        {sucursalesData.map((sucursal, idx) => (
+          <div
+            key={idx}
+            className={`${styles.card} ${estadoColor[sucursal.estado] || ''}`}
+          >
+            <div className={styles.cardHeader}>
+              <b>{sucursal.nombre}</b>
+              <span className={styles.estado}>{sucursal.estado === 'online' ? '🟢' : sucursal.estado === 'warning' ? '🟠' : '🔴'}</span>
+            </div>
+            <div className={styles.cardBody}>
+              <div><b>Admin:</b> {sucursal.admin}</div>
+              <div><b>Ahora:</b> {sucursal.ahora} <span className={styles.porcentaje}>{sucursal.porcentajeAhora}%</span></div>
+              <div><b>Hoy:</b> {sucursal.hoy} <span className={styles.porcentaje}>{sucursal.porcentajeHoy}%</span></div>
+              <div><b>Asignados:</b> {sucursal.asignados}</div>
+            </div>
+            <button className={styles.detallesBtn}>Detalles</button>
+          </div>
+        ))}
+      </div>
       <div className={styles.referencias}>
         <span className={styles.refTitle}>Referencias</span>
         <span className={styles.refOnline}><span className={styles.dot + ' ' + styles.online}></span>En línea</span>

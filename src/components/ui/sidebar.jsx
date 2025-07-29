@@ -23,7 +23,7 @@ const Sidebar = () => {
   const iconMap = {
     "Inicio": <FaHome />,
     "Mis Datos": <FaUser />,
-    "Sucursales": <FaBuilding />,
+    "Sucursales Activas": <FaBuilding />,
     "Empleados": <FaUsers />,
     "Reportes": <FaChartBar />,
     "Usuarios": <FaUser />,

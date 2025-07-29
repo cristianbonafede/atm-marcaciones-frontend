@@ -39,6 +39,7 @@ import SucursalesPage from "./pages/Sucursales/Sucursales";
 import EmpleadosListPage from "./pages/Empleados/EmpleadosList";
 import EmpleadosDetailPage from "./pages/Empleados/EmpleadosDetail";
 import SectoresListPage from "./pages/Sectores/SectoresList";
+import SectoresDetailPage from "./pages/Sectores/SectoresDetail";
 
 function App() {
   return (
@@ -64,7 +65,10 @@ function App() {
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="sucursales" element={<SucursalesPage />} />
-            <Route path="reporte/sectores" element={<SectoresListPage />} />
+            <Route path="reportes/sectores/:id" element={<SectoresDetailPage />} />
+            <Route path="reportes/sectores" element={<SectoresListPage />} />
+            <Route path="config/sectores/:id" element={<SectoresDetailPage />} />
+            <Route path="config/sectores" element={<SectoresListPage />} />
             <Route path="" exact element={<InicioPage />} />
             <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>
