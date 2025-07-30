@@ -67,7 +67,7 @@ const EmpleadosListPage = () => {
     {
       type: "select",
       label: "Estado",
-      name: "estado",
+      name: "status",
       values: [
         { text: "Todos", value: "" },
         { text: "Activo", value: 10 },
@@ -185,7 +185,7 @@ const EmpleadosListPage = () => {
     }
 
     const response = await http.delete(
-      `empleados/${item.id}`
+      `workers/${item.id}`
     );
     if (response) {
       await modalSuccess(

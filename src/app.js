@@ -40,6 +40,9 @@ import EmpleadosListPage from "./pages/Empleados/EmpleadosList";
 import EmpleadosDetailPage from "./pages/Empleados/EmpleadosDetail";
 import SectoresListPage from "./pages/Sectores/SectoresList";
 import SectoresDetailPage from "./pages/Sectores/SectoresDetail";
+import DedicacionesForm from "./components/dedicaciones/dedicaciones-form";
+import DedicacionesList from "./pages/Dedicaciones/DedicacionesList";
+import DedicacionesDetailPage from "./pages/Dedicaciones/DedicacionesDetail";
 
 function App() {
   return (
@@ -68,7 +71,9 @@ function App() {
             <Route path="reportes/sectores/:id" element={<SectoresDetailPage />} />
             <Route path="reportes/sectores" element={<SectoresListPage />} />
             <Route path="config/sectores/:id" element={<SectoresDetailPage />} />
-            <Route path="config/sectores" element={<SectoresListPage />} />
+            <Route path="config/sectores" element={<SectoresListPage />} /> 
+            <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />
+            <Route path="config/dedicacion" element={<DedicacionesList />} />
             <Route path="" exact element={<InicioPage />} />
             <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>

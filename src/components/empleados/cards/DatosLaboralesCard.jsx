@@ -8,6 +8,7 @@ const DatosLaboralesCard = ({
   required,
   ocupaciones,
   categorias,
+  dedications,
   subtitle,
 }) => (
   <div>
@@ -22,7 +23,7 @@ const DatosLaboralesCard = ({
     </div>
     <Row gutter={16}>
       <Col xs={24} md={12}>
-        <Form.Item label="Ocupación" name="occupationId">
+        <Form.Item label="Ocupación" name="occupationId" rules={[required]}>
           <Select showSearch optionFilterProp="children" disabled={disabled}>
             {ocupaciones?.map((option, index) => (
               <Select.Option key={index} value={option.occupationId}>
@@ -33,7 +34,7 @@ const DatosLaboralesCard = ({
         </Form.Item>
       </Col>
       <Col xs={24} md={12}>
-        <Form.Item label="Categoría" name="workerCategoryId">
+        <Form.Item label="Categoría" name="workerCategoryId" rules={[required]}>
           <Select showSearch optionFilterProp="children" disabled={disabled}>
             {categorias?.map((option, index) => (
               <Select.Option key={index} value={option.workerCategoryId}>
@@ -46,7 +47,7 @@ const DatosLaboralesCard = ({
     </Row>
     <Row gutter={16}>
       <Col xs={24} md={12}>
-        <Form.Item label="Calificacion" name="calification" rules={[required]}>
+        <Form.Item label="Calificacion" name="calification">
           <Input type="number" disabled={disabled} />
         </Form.Item>
       </Col>
@@ -98,7 +99,13 @@ const DatosLaboralesCard = ({
     <Row gutter={16}>
       <Col xs={24} md={12}>
         <Form.Item label="Dedicación" name="dedicationId">
-          <Input disabled={disabled} />
+          <Select showSearch optionFilterProp="children" disabled={disabled}>
+            {dedications?.map((option, index) => (
+              <Select.Option key={index} value={option.dedicationId}>
+                {option.minutes} minutos, {option.percentage}%
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
       </Col>
       <Col xs={24} md={12}>

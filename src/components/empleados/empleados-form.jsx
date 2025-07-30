@@ -23,6 +23,7 @@ const EmpleadosForm = ({ id }) => {
   const [ocupaciones, setOcupaciones] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [localidades, setLocalidades] = useState([]);
+  const [dedications, setDedications] = useState([]);
 
   const disabled =
     id === "nuevo"
@@ -36,9 +37,13 @@ const EmpleadosForm = ({ id }) => {
       if (response) {
         setOcupaciones(response.data.list);
       }
-      response = await http.get("workercategories?Page=1&PageSize=10000");
+      response = await http.get("workercategories?Page=1&Size=10000");
       if (response) {
         setCategorias(response.data.list);
+      }
+      response = await http.get("dedications?Page=1&Size=10000&Status=enabled");
+      if (response) {
+        setDedications(response.data.list);
       }
       response = await locations();
       if (response) {
@@ -133,6 +138,7 @@ const EmpleadosForm = ({ id }) => {
                   disabled={disabled}
                   required={required}
                   ocupaciones={ocupaciones}
+                  dedications={dedications}
                   categorias={categorias}
                   subtitle="Información laboral y administrativa"
                 />
@@ -156,18 +162,22 @@ const EmpleadosForm = ({ id }) => {
                   subtitle="Domicilio"
                 />
               </Card>
-              <Card>
-                <ObservacionesCard
-                  form={form}
-                  disabled={disabled}
-                  subtitle="Observaciones generales"
-                />
-              </Card>
+
               <Card>
                 <DatosTrabajoCard
                   form={form}
                   disabled={disabled}
                   subtitle="Datos del lugar de trabajo"
+                />
+              </Card>
+            </Col>
+
+             <Col xs={24} md={24}>
+             <Card>
+                <ObservacionesCard
+                  form={form}
+                  disabled={disabled}
+                  subtitle="Observaciones generales"
                 />
               </Card>
             </Col>
