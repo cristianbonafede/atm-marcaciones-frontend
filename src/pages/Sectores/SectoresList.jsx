@@ -127,21 +127,12 @@ useEffect(() => {
 
   const menu = (item) => (
     <Menu>
-      {!hasPermission(actions.SectoresEditar) && (
-        <Menu.Item key="1" icon={<FaSearch />} onClick={() => onClickEdit(item)}>
-          Ver
-        </Menu.Item>
-      )}
       {hasPermission(actions.SectoresEditar) && (
         <Menu.Item key="1" icon={<FaEdit />} onClick={() => onClickEdit(item)}>
           Editar
         </Menu.Item>
       )}
-      {hasPermission(actions.SectoresEliminar) && (
-        <Menu.Item key="2" icon={<FaDotCircle />} onClick={() => onClickDelete(item)}>
-          {item.habilitado ? "Deshabilitar" : "Habilitar"}
-        </Menu.Item>
-      )}
+
     </Menu>
   );
   const onClickAdd = () => {

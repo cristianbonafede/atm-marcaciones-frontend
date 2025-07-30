@@ -11,6 +11,7 @@ import {
   getWorkplaces,
   updateSector,
 } from "../../services/sectoresService";
+import http from "../../services/http";
 const { Option } = Select;
 
 const SectoresForm = ({ id }) => {
@@ -57,23 +58,24 @@ const SectoresForm = ({ id }) => {
     );
   }, []);
 
-  // Cargar datos si es edición
-  useEffect(() => {
-    if (id && id !== "nuevo") {
-      setLoading(true);
-      getSectorById(id).then((data) => {
-        form.setFieldsValue({
-          name: data.name,
-          crewCategoryId: data.crewCategoryId,
-          workplaceId: data.workplaceId,
-          workingHourId: data.workingHourId ?? undefined,
-          dedicationId: data.dedicationId ?? undefined,
-          bossId: data.bossId ?? undefined,
-          parentId: data.parentId ?? undefined,
-        });
-        setLoading(false);
-      });
+  // Cargar datos si es edición 
+     useEffect(() => {
+  
+    async function getForm() {
+      if (id === "nuevo") {
+        return;
+      }
+
+      const response = await http.get(`crews/${id}`);
+      console.log("Response:", response);
+      if (response) {
+        const data = response.data;
+        form.setFieldsValue(data);
+      }
+    setLoading(false);
+      
     }
+    getForm();
   }, [id, form]);
 
   const onFinish = async (values) => {

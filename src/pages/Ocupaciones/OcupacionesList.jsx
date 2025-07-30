@@ -88,7 +88,7 @@ const OcupacionesListPage = () => {
           Editar
         </Menu.Item>
       )}
-      {hasPermission(actions.OcupacionesEliminar) && (
+      {/* {hasPermission(actions.OcupacionesEliminar) && (
         <Menu.Item
           key="2"
           icon={<FaTrash />}
@@ -96,7 +96,7 @@ const OcupacionesListPage = () => {
         >
           Eliminar
         </Menu.Item>
-      )}
+      )} */}
     </Menu>
   );
 

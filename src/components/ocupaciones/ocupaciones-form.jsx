@@ -102,19 +102,19 @@ const OcupacionesForm = ({ id }) => {
                 </Select>
             </Form.Item>
             <Form.Item>
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
-              <Button style={{ minWidth: 120 }} onClick={() => window.history.back()}>
-                Cancelar
-              </Button>
-              <Button
-                type="primary"
-                htmlType="submit"
-                loading={loading}
-                style={{ minWidth: 120 }}
-              >
-                Guardar
-              </Button>
-            </div>
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
+                    <Button style={{ minWidth: 120 }} onClick={() => window.history.back()}>
+                        Cancelar
+                    </Button>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        loading={loading}
+                        style={{ minWidth: 120 }}
+                    >
+                        Guardar
+                    </Button>
+                </div>
             </Form.Item>
         </Form>
     );
