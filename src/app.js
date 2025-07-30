@@ -43,6 +43,8 @@ import SectoresDetailPage from "./pages/Sectores/SectoresDetail";
 import DedicacionesForm from "./components/dedicaciones/dedicaciones-form";
 import DedicacionesList from "./pages/Dedicaciones/DedicacionesList";
 import DedicacionesDetailPage from "./pages/Dedicaciones/DedicacionesDetail";
+import OcupacionesDetailPage from "./pages/Ocupaciones/OcupacionesDetail";
+import OcupacionesListPage from "./pages/Ocupaciones/OcupacionesList";
 
 function App() {
   return (
@@ -74,6 +76,8 @@ function App() {
             <Route path="config/sectores" element={<SectoresListPage />} /> 
             <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />
             <Route path="config/dedicacion" element={<DedicacionesList />} />
+            <Route path="config/ocupaciones/:id" element={<OcupacionesDetailPage />} />
+            <Route path="config/ocupaciones" element={<OcupacionesListPage />} />
             <Route path="" exact element={<InicioPage />} />
             <Route path="inicio/:parent" element={<SubmenuPage />} />
           </Route>
