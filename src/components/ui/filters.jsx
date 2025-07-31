@@ -7,7 +7,6 @@ import TableContext from "../../store/table-context";
 const Filters = (props) => {
   const [form] = Form.useForm();
   const { fields } = props;
-
   const context = useContext(TableContext);
 
   const onClickSearch = (values) => {

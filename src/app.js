@@ -45,6 +45,8 @@ import DedicacionesList from "./pages/Dedicaciones/DedicacionesList";
 import DedicacionesDetailPage from "./pages/Dedicaciones/DedicacionesDetail";
 import OcupacionesDetailPage from "./pages/Ocupaciones/OcupacionesDetail";
 import OcupacionesListPage from "./pages/Ocupaciones/OcupacionesList";
+import EmpleadoSectorList from "./pages/EmpleadoSector/EmpleadoSectorList";
+import EmpleadoSectorDetailPage from "./pages/EmpleadoSector/EmpleadoSectorDetail";
 
 function App() {
   return (
@@ -72,6 +74,8 @@ function App() {
             <Route path="sucursales" element={<SucursalesPage />} />
             <Route path="reportes/sectores/:id" element={<SectoresDetailPage />} />
             <Route path="reportes/sectores" element={<SectoresListPage />} />
+            <Route path="reportes/empleados-sector/:id" element={<EmpleadoSectorDetailPage />} />
+            <Route path="reportes/empleados-sector" element={<EmpleadoSectorList />} />
             <Route path="config/sectores/:id" element={<SectoresDetailPage />} />
             <Route path="config/sectores" element={<SectoresListPage />} /> 
             <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />

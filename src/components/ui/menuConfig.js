@@ -61,6 +61,7 @@ const menuConfig = [
             { label: "Todos los sectores", path: "/reportes/sectores", icon: <FaRegBuilding /> },
             { label: "Empleados", path: "/reportes/empleados", icon: <FaUsers /> },
             { label: "Empleados por categoria", path: "/reportes/empleados-categoria", icon: <FaRegUser /> },
+            { label: "Empleados por sector", path: "/reportes/empleados-sector", icon: <FaRegUser /> },
             { label: "Trabajadores con datos verificados", path: "/reportes/verificados", icon: <FaUserCheck /> },
             { label: "Trabajadores sin datos verificados", path: "/reportes/no-verificados", icon: <FaUserTimes /> },
             { label: "Reporte de mayor dedicacion", path: "/reportes/mayor-dedicacion", icon: <FaRegStar /> },

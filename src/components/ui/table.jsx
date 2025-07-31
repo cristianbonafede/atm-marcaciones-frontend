@@ -13,7 +13,7 @@ import classes from "./table.module.scss";
 import search from "./../../assets/images/search.png";
 
 const Table = (props) => {
-  const { columns, menu, filterUsuario, setIsFilter } = props;
+  const { columns, menu, filterUsuario, setIsFilter, prefilter } = props;
   const context = useContext(TableContext);
 
   const [first, setFirst] = useState(true);
@@ -48,7 +48,7 @@ const Table = (props) => {
 
       setLoading(true);
 
-      let url = `${props.url}?page=${context.page}&size=${size}&orderBy=${orderBy}&orderDirection=${orderDirection}`;
+      let url = `${props.url}?${prefilter ? prefilter + "&" : ""}page=${context.page}&size=${size}&orderBy=${orderBy}&orderDirection=${orderDirection}`;
 
       for (const property in context.filters) {
 

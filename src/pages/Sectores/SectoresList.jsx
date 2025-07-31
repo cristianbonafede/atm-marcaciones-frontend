@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu } from "antd";
-import { FaDotCircle, FaEdit, FaSearch } from "react-icons/fa";
+import { Menu, Modal, Spin, Table as AntTable } from "antd";
+import { FaDotCircle, FaEdit, FaSearch, FaUsers } from "react-icons/fa";
 
 import { TableContextProvider } from "./../../store/table-context";
 import { confirm, modalSuccess } from "../../services/notifications";
@@ -12,7 +12,9 @@ import Card from "./../../components/ui/card";
 import Header from "../../components/ui/header";
 import Filters from "./../../components/ui/filters";
 import Table from "../../components/ui/table";
+import EmpleadoSector from "../EmpleadoSector/EmpleadoSectorList";
 import iconTeam from "../../assets/images/team.png";
+import EmpleadoSectorListPage from "../EmpleadoSector/EmpleadoSectorList";
 
 const SectoresListPage = () => {
   let navigate = useNavigate();
@@ -28,11 +30,14 @@ const SectoresListPage = () => {
     { type: "input", label: "Nombre", name: "name" },
     { type: "select", label: "Categoría", name: "crewCategoryId", values: [] },
     { type: "select", label: "Sucursal", name: "workplaceId", values: [] },
-    // { type: "select", label: "Horario", name: "workingHourId", values: [] },
-    // { type: "select", label: "Dedicación", name: "dedicationId", values: [] },
     { type: "select", label: "Jefe", name: "bossId", values: [] },
-    // { type: "select", label: "Sector padre", name: "parentId", values: [] },
   ]);
+
+  const [showWorkersModal, setShowWorkersModal] = useState(false);
+  const [workersLoading, setWorkersLoading] = useState(false);
+  const [selectedSector, setSelectedSector] = useState(null);
+  const [selectedSectorName, setSelectedSectorName] = useState(null);
+  const [showCrewsHasWorkers, setShowCrewsHasWorkers] = useState(false);
 
   const columns = [
     { title: "Nombre", property: "name", sortable: true },
@@ -42,89 +47,73 @@ const SectoresListPage = () => {
     { title: "Dedicación", property: "dedication", sortable: true },
     { title: "Sector padre", property: "parent", sortable: true },
   ];
-useEffect(() => {
-  async function getData() {
-    const [
-      crewCategoriesRes,
-      workplacesRes,
-      bossesRes,
-      dedicationsRes,
-      crewsRes,
-      workersRes,
-    ] = await Promise.all([
-      http.get("crewcategories?Page=1&PageSize=10000"),
-      http.get("workplaces?Page=1&Size=10000"),
-      http.get("crews/bosses"),
-      // http.get("dedications?Page=1&PageSize=10000"),
-      // http.get("crews?Page=1&PageSize=10000"),
-      // http.get("workers?Page=1&PageSize=10000"),
-    ]);
-    const newFilters = [...filters];
-    if (crewCategoriesRes) {
-      newFilters[1] = {
-        ...newFilters[1],
-        values: crewCategoriesRes.data.list.map((item) => ({
-          value: item.crewCategoryId,
-          text: item.name,
-        })),
-      };
+  useEffect(() => {
+    async function getData() {
+      const [
+        crewCategoriesRes,
+        workplacesRes,
+        bossesRes,
+        dedicationsRes,
+        crewsRes,
+        workersRes,
+      ] = await Promise.all([
+        http.get("crewcategories?Page=1&PageSize=10000"),
+        http.get("workplaces?Page=1&Size=10000"),
+        http.get("crews/bosses"),
+        // http.get("dedications?Page=1&PageSize=10000"),
+        // http.get("crews?Page=1&PageSize=10000"),
+        // http.get("workers?Page=1&PageSize=10000"),
+      ]);
+      const newFilters = [...filters];
+      if (crewCategoriesRes) {
+        newFilters[1] = {
+          ...newFilters[1],
+          values: crewCategoriesRes.data.list.map((item) => ({
+            value: item.crewCategoryId,
+            text: item.name,
+          })),
+        };
+      }
+      if (workplacesRes) {
+        newFilters[2] = {
+          ...newFilters[2],
+          values: workplacesRes.data.list.map((item) => ({
+            value: item.workplaceId,
+            text: item.name,
+          })),
+        };
+      }
+
+      if (bossesRes) {
+        newFilters[3] = {
+          ...newFilters[3],
+          values: bossesRes.data.map((item) => ({
+            value: item.id,
+            text: item.name,
+          })),
+        };
+      }
+      setFilters(newFilters);
     }
-    if (workplacesRes) {
-      newFilters[2] = {
-        ...newFilters[2],
-        values: workplacesRes.data.list.map((item) => ({
-          value: item.workplaceId,
-          text: item.name,
-        })),
-      };
-    }
 
-    if (bossesRes) {
-      newFilters[3] = {
-        ...newFilters[3],
-        values: bossesRes.data.map((item) => ({
-          value: item.id,
-          text: item.name,
-        })),
-      };
-    }
+    getData();
+  }, []);
 
-    // if (dedicationsRes) {
-    //   newFilters[4] = {
-    //     ...newFilters[4],
-    //     values: dedicationsRes.data.list.map((item) => ({
-    //       value: item.dedicationId,
-    //       text: item.name,
-    //     })),
-    //   };
-    // }
 
-    // if (workersRes) {
-    //   newFilters[5] = {
-    //     ...newFilters[5],
-    //     values: workersRes.data.list.map((item) => ({
-    //       value: item.id,
-    //       text: item.nombre,
-    //     })),
-    //   };
-    // }
+  const showModal = async (crew) => {
+    setShowCrewsHasWorkers(true);
+    setSelectedSector(crew.id);
+    setSelectedSectorName(crew.name);
+  };
 
-    // if (crewsRes) {
-    //   newFilters[6] = {
-    //     ...newFilters[6],
-    //     values: crewsRes.data.list.map((item) => ({
-    //       value: item.Id,
-    //       text: item.name,
-    //     })),
-    //   };
-    // }
+  const workersColumns = [
+    { title: "ID Relación", dataIndex: "crewHasWorkerId", key: "crewHasWorkerId" },
+    { title: "ID Trabajador", dataIndex: "workerId", key: "workerId" },
+    { title: "Fecha Inicio", dataIndex: "datetime", key: "datetime", render: (v) => v && v.split("T")[0] },
+    { title: "Fecha Fin", dataIndex: "finishDatetime", key: "finishDatetime", render: (v) => v ? v.split("T")[0] : "-" },
+  ];
 
-    setFilters(newFilters);
-  }
-
-  getData();
-}, []);
-
+  // Agrega el botón al menú contextual de cada fila
   const menu = (item) => (
     <Menu>
       {hasPermission(actions.SectoresEditar) && (
@@ -132,7 +121,9 @@ useEffect(() => {
           Editar
         </Menu.Item>
       )}
-
+      <Menu.Item key="2" icon={<FaUsers />} onClick={() => showModal(item)}>
+        Ver Trabajadores
+      </Menu.Item>
     </Menu>
   );
   const onClickAdd = () => {
@@ -192,28 +183,42 @@ useEffect(() => {
   ];
 
   return (
-    <TableContextProvider>
-      <Card>
-        <Header
-          title={title}
-          icon={icon}
-          breadcrumb={breadcrumb}
-          showFilters
-          buttons={buttons}
-          isFilter={isFilter}
+    <>
+      <TableContextProvider>
+        <Card>
+          <Header
+            title={title}
+            icon={icon}
+            breadcrumb={breadcrumb}
+            showFilters
+            buttons={buttons}
+            isFilter={isFilter}
+          />
+          <Filters fields={filters} />
+          <Table
+            id="table-sectores"
+            columns={columns}
+            menu={menu}
+            url="/crews"
+            orderBy="name"
+            orderDirection="ascending"
+            setIsFilter={setIsFilter}
+          />
+        </Card>
+      </TableContextProvider>
+      <Modal
+        open={showCrewsHasWorkers}
+        onCancel={() => setShowCrewsHasWorkers(false)}
+        footer={null}
+        width="80%"
+      >
+        <EmpleadoSectorListPage
+          crewId={selectedSector}
+          name={selectedSectorName}
         />
-        <Filters fields={filters} />
-        <Table
-          id="table-sectores"
-          columns={columns}
-          menu={menu}
-          url="/crews"
-          orderBy="name"
-          orderDirection="ascending"
-          setIsFilter={setIsFilter}
-        />
-      </Card>
-    </TableContextProvider>
+      </Modal>
+    </>
+
   );
 };
 
