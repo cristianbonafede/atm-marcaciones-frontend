@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu, Modal, Spin, Table as AntTable } from "antd";
-import { FaDotCircle, FaEdit, FaSearch, FaUsers } from "react-icons/fa";
+import { Menu, Modal } from "antd";
+import { FaEdit, FaUsers } from "react-icons/fa";
 
 import { TableContextProvider } from "./../../store/table-context";
 import { confirm, modalSuccess } from "../../services/notifications";
@@ -12,9 +12,9 @@ import Card from "./../../components/ui/card";
 import Header from "../../components/ui/header";
 import Filters from "./../../components/ui/filters";
 import Table from "../../components/ui/table";
-import EmpleadoSector from "../EmpleadoSector/EmpleadoSectorList";
 import iconTeam from "../../assets/images/team.png";
 import EmpleadoSectorListPage from "../EmpleadoSector/EmpleadoSectorList";
+import SectorTree from "../../components/sectores/SectorTree";
 
 const SectoresListPage = () => {
   let navigate = useNavigate();
@@ -33,11 +33,13 @@ const SectoresListPage = () => {
     { type: "select", label: "Jefe", name: "bossId", values: [] },
   ]);
 
-  const [showWorkersModal, setShowWorkersModal] = useState(false);
-  const [workersLoading, setWorkersLoading] = useState(false);
   const [selectedSector, setSelectedSector] = useState(null);
   const [selectedSectorName, setSelectedSectorName] = useState(null);
   const [showCrewsHasWorkers, setShowCrewsHasWorkers] = useState(false);
+  const [showOrganigrama, setShowOrganigrama] = useState(false);
+  const [crews, setCrews] = useState([]);
+  const [bosses, setBosses] = useState([]);
+
 
   const columns = [
     { title: "Nombre", property: "name", sortable: true },
@@ -85,6 +87,7 @@ const SectoresListPage = () => {
       }
 
       if (bossesRes) {
+        setBosses(bossesRes.data);
         newFilters[3] = {
           ...newFilters[3],
           values: bossesRes.data.map((item) => ({
@@ -105,7 +108,25 @@ const SectoresListPage = () => {
     setSelectedSector(crew.id);
     setSelectedSectorName(crew.name);
   };
+  const showModalOrganigrama = async (e) => {
+    let url = `crews?page=1&size=10000`;
+    for (const property in e.filters) {
+      url += `&${property}=${e.filters[property] ?? ""}`;
+    }
+    const response = await http.get(url);
+    if (response) {
+      const enrichedCrews = response.data.list.map((crew) => {
+        const boss = bosses.find((b) => b.id === crew.bossId);
+        return {
+          ...crew,
+          boss: boss ? `${boss.name} (${boss.documentNumber})` : null,
+        };
+      });
 
+      await setCrews(enrichedCrews);
+      setShowOrganigrama(true);
+    };
+  }
   const workersColumns = [
     { title: "ID Relación", dataIndex: "crewHasWorkerId", key: "crewHasWorkerId" },
     { title: "ID Trabajador", dataIndex: "workerId", key: "workerId" },
@@ -121,9 +142,12 @@ const SectoresListPage = () => {
           Editar
         </Menu.Item>
       )}
-      <Menu.Item key="2" icon={<FaUsers />} onClick={() => showModal(item)}>
-        Ver Trabajadores
-      </Menu.Item>
+      {hasPermission(actions.SectoresEditar) && (
+        <Menu.Item key="2" icon={<FaUsers />} onClick={() => showModal(item)}>
+          Ver empleados
+        </Menu.Item>
+      )}
+
     </Menu>
   );
   const onClickAdd = () => {
@@ -173,6 +197,13 @@ const SectoresListPage = () => {
       visible: hasPermission(actions.SectoresCrear),
     },
     {
+      title: "Ver Organigrama",
+      text: "Organigrama",
+      type: "primary",
+      onClick: showModalOrganigrama,
+      visible: hasPermission(actions.SectoresCrear),
+    },
+    {
       title: "Exportar a Excel",
       text: "Exportar",
       type: "primary",
@@ -205,6 +236,7 @@ const SectoresListPage = () => {
             setIsFilter={setIsFilter}
           />
         </Card>
+
       </TableContextProvider>
       <Modal
         open={showCrewsHasWorkers}
@@ -217,6 +249,18 @@ const SectoresListPage = () => {
           name={selectedSectorName}
         />
       </Modal>
+<Modal
+  open={showOrganigrama}
+  onCancel={() => setShowOrganigrama(false)}
+  footer={null}
+  title="Organigrama de Sectores"
+  height="85%"
+  width="90%" // o 100% si quieres más ancho
+  style={{top: 20 }} // aumenta el alto
+  bodyStyle={{ overflowY: "auto", height: "90%" }} // aumenta el alto interno
+>
+  <SectorTree crews={crews} />
+</Modal>
     </>
 
   );
