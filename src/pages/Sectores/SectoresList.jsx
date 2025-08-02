@@ -4,7 +4,6 @@ import { Menu, Modal } from "antd";
 import { FaEdit, FaUsers } from "react-icons/fa";
 
 import { TableContextProvider } from "./../../store/table-context";
-import { confirm, modalSuccess } from "../../services/notifications";
 import http from "./../../services/http";
 import { actions, hasPermission } from "../../services/security";
 
@@ -20,7 +19,7 @@ const SectoresListPage = () => {
   let navigate = useNavigate();
 
   const title = "Sectores";
-  const icon = <img className="icon-img" src={iconTeam} />;
+  const icon = <img className="icon-img" alt="icono" src={iconTeam} />;
 
   const breadcrumb = [{ title: "Sectores", url: "/sectores" }];
 
@@ -49,22 +48,18 @@ const SectoresListPage = () => {
     { title: "Dedicación", property: "dedication", sortable: true },
     { title: "Sector padre", property: "parent", sortable: true },
   ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     async function getData() {
       const [
         crewCategoriesRes,
         workplacesRes,
         bossesRes,
-        dedicationsRes,
-        crewsRes,
-        workersRes,
       ] = await Promise.all([
         http.get("crewcategories?Page=1&PageSize=10000"),
         http.get("workplaces?Page=1&Size=10000"),
         http.get("crews/bosses"),
-        // http.get("dedications?Page=1&PageSize=10000"),
-        // http.get("crews?Page=1&PageSize=10000"),
-        // http.get("workers?Page=1&PageSize=10000"),
       ]);
       const newFilters = [...filters];
       if (crewCategoriesRes) {
@@ -127,14 +122,6 @@ const SectoresListPage = () => {
       setShowOrganigrama(true);
     };
   }
-  const workersColumns = [
-    { title: "ID Relación", dataIndex: "crewHasWorkerId", key: "crewHasWorkerId" },
-    { title: "ID Trabajador", dataIndex: "workerId", key: "workerId" },
-    { title: "Fecha Inicio", dataIndex: "datetime", key: "datetime", render: (v) => v && v.split("T")[0] },
-    { title: "Fecha Fin", dataIndex: "finishDatetime", key: "finishDatetime", render: (v) => v ? v.split("T")[0] : "-" },
-  ];
-
-  // Agrega el botón al menú contextual de cada fila
   const menu = (item) => (
     <Menu>
       {hasPermission(actions.SectoresEditar) && (
@@ -157,19 +144,19 @@ const SectoresListPage = () => {
     console.log(item);
     navigate(`/reportes/sectores/${item.id}`);
   };
-  const onClickDelete = async (item) => {
-    const confirmed = await confirm(
-      item.habilitado ? "Deshabilitar sector" : "Habilitar sector",
-      item.habilitado ? `¿Esta seguro que desea deshabilitar el sector ${item.name}?` :
-        `¿Esta seguro que desea habilitar el sector ${item.name}?`
-    );
-    if (!confirmed) return;
-    const response = await http.delete(`crews/${item.Id}`);
-    if (response) {
-      await modalSuccess("Sector modificado", "El sector fue modificado exitosamente");
-      navigate(0);
-    }
-  };
+  // const onClickDelete = async (item) => {
+  //   const confirmed = await confirm(
+  //     item.habilitado ? "Deshabilitar sector" : "Habilitar sector",
+  //     item.habilitado ? `¿Esta seguro que desea deshabilitar el sector ${item.name}?` :
+  //       `¿Esta seguro que desea habilitar el sector ${item.name}?`
+  //   );
+  //   if (!confirmed) return;
+  //   const response = await http.delete(`crews/${item.Id}`);
+  //   if (response) {
+  //     await modalSuccess("Sector modificado", "El sector fue modificado exitosamente");
+  //     navigate(0);
+  //   }
+  // };
   const onClickExportarExcel = async (e) => {
     setLoadingExport(true);
     let url = `crews/export?`;

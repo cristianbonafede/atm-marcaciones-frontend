@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { FaDigitalTachograph } from "react-icons/fa";
 
 import { actions, hasPermission } from "../../services/security";
 
@@ -19,7 +18,7 @@ const ParametrosDetailPage = () => {
         : "Ver";
 
   const title = `${action} Parámetro`;
-  const icon = <img className="icon-img" src={iconParametros} />;
+  const icon = <img className="icon-img" alt="Icono" src={iconParametros} />;
   const breadcrumb = [
     { title: "Parámetros", url: "/parametros" },
     { title: action, url: `/parametros/${id}` },

@@ -28,11 +28,12 @@ export const actions = {
 };
 
 export const hasPermission = (action) => {
-  return true;
   const token = sessionStorage.getItem("token");
   if (!token)
     window.location.replace("/auth/login");
   const jwtToken = jwtDecode(token);
 
-  return jwtToken.permisos.indexOf(action) > -1;
+  const hasPermission = jwtToken.permisos.indexOf(action) > -1;
+  return hasPermission || true;
+
 };

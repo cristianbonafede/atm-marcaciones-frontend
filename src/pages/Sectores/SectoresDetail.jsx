@@ -18,7 +18,7 @@ const SectoresDetailPage = () => {
       : "Ver";
 
   const title = `${action} Sector`;
-  const icon = <img className="icon-img" src={iconTeam} />;
+  const icon = <img className="icon-img" alt="Icono" src={iconTeam} />;
   const breadcrumb = [
     { title: "Sectores", url: "/sectores" },
     { title: action, url: `/sectores/${id}` },

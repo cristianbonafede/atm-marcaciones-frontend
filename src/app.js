@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import esES from "antd/lib/locale/es_ES";
@@ -33,14 +32,11 @@ import "./styles/selects.scss";
 import "./styles/switches.scss";
 import "./styles/tabs.scss";
 import "./styles/tags.scss";
-import PacientesDetailPage from "./pages/Pacientes/PacientesDetail";
-import PacientesListPage from "./pages/Pacientes/PacientesList";
 import SucursalesPage from "./pages/Sucursales/Sucursales";
 import EmpleadosListPage from "./pages/Empleados/EmpleadosList";
 import EmpleadosDetailPage from "./pages/Empleados/EmpleadosDetail";
 import SectoresListPage from "./pages/Sectores/SectoresList";
 import SectoresDetailPage from "./pages/Sectores/SectoresDetail";
-import DedicacionesForm from "./components/dedicaciones/dedicaciones-form";
 import DedicacionesList from "./pages/Dedicaciones/DedicacionesList";
 import DedicacionesDetailPage from "./pages/Dedicaciones/DedicacionesDetail";
 import OcupacionesDetailPage from "./pages/Ocupaciones/OcupacionesDetail";
@@ -59,8 +55,6 @@ function App() {
           <Route path="auth/reset" element={<ResetPasswordPage />} />
           <Route path="auth/update" element={<UpdatePasswordPage />} />
           <Route path="/" element={<LayoutPage />}>
-            <Route path="pacientes/:id" element={<PacientesDetailPage />} />
-            <Route path="pacientes" element={<PacientesListPage />} />
             <Route path="parametros/:id" element={<ParametrosDetailPage />} />
             <Route path="parametros" element={<ParametrosListPage />} />
             <Route path="perfiles/:id" element={<PerfilesDetailPage />} />

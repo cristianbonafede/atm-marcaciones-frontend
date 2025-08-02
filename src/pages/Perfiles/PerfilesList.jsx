@@ -19,7 +19,7 @@ const PerfilesListPage = () => {
   let navigate = useNavigate();
 
   const title = "Perfiles";
-  const icon = <img className="icon-img" src={iconSecurity}/>; 
+  const icon = <img className="icon-img" alt="Icono" src={iconSecurity}/>; 
 
   const breadcrumb = [{ title: "Perfiles", url: "/perfiles" }];
 

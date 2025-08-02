@@ -138,21 +138,6 @@ const DatosLaboralesCard = ({
           </Select>
         </Form.Item>
       </Col>
-      <Col xs={24} md={12}>
-        <Form.Item label="Verificar Datos" name="verifyData">
-          <Select disabled={disabled}>
-            <Select.Option value={true}>Sí</Select.Option>
-            <Select.Option value={false}>No</Select.Option>
-          </Select>
-        </Form.Item>
-      </Col>
-    </Row>
-    <Row gutter={16}>
-      <Col xs={24} md={12}>
-        <Form.Item label="Verificado Por" name="verifiedBy">
-          <Input disabled={disabled} />
-        </Form.Item>
-      </Col>
     </Row>
 
     <Row gutter={16}>

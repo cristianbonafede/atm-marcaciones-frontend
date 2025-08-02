@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu } from "antd";
-import { FaEdit, FaSearch, FaDigitalTachograph } from "react-icons/fa";
+import { FaEdit, FaSearch } from "react-icons/fa";
 
 import Card from "../../components/ui/card";
 import Header from "../../components/ui/header";
@@ -17,7 +17,7 @@ const ParametrosListPage = () => {
   let navigate = useNavigate();
 
   const title = "Parámetros";
-  const icon = <img className="icon-img" src={iconParametros} />;
+  const icon = <img className="icon-img" alt="Icono" src={iconParametros} />;
   const breadcrumb = [{ title: "Parámetros", url: "/parametros" }];
 
   const [isFilter, setIsFilter] = useState(false);
@@ -60,6 +60,7 @@ const ParametrosListPage = () => {
     </Menu>
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     async function getData() {
       const response = await http.get("parametros/grupos");

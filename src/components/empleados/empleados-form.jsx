@@ -130,16 +130,20 @@ const EmpleadosForm = ({ id }) => {
                   disabled={disabled}
                   required={required}
                   subtitle="Información básica del empleado"
+                  idWorker={id}
+verifiedBy={empleado?.verifiedBy || ""}
+                  verifyData={empleado?.verifyData || false}
                 />
               </Card>
               <Card>
                 <DatosLaboralesCard
-                  form={form}
+                  
                   disabled={disabled}
                   required={required}
                   ocupaciones={ocupaciones}
                   dedications={dedications}
                   categorias={categorias}
+
                   subtitle="Información laboral y administrativa"
                 />
               </Card>

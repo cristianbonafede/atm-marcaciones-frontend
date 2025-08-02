@@ -1,7 +1,5 @@
 import http from "./http";
 
-const API_URL = "/api/sectores";
-
 export const getSectorById = (id) => {
   return http.get(`crews/${id}`);
 };

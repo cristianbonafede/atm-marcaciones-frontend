@@ -17,7 +17,7 @@ const UsuariosDetailPage = () => {
         : "Ver";
 
   const title = `${action} Usuario`;
-  const icon = <img className="icon-img" src={iconTeam}/>; 
+  const icon = <img className="icon-img" alt="icono" src={iconTeam}/>; 
   const breadcrumb = [
     { title: "Usuarios", url: "/usuarios" },
     { title: action, url: `/usuarios/${id}` },

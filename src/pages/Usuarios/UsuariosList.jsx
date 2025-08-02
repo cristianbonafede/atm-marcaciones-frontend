@@ -19,7 +19,7 @@ const UsuariosListPage = () => {
   let navigate = useNavigate();
 
   const title = "Usuarios";
-  const icon = <img className="icon-img" src={iconTeam}/>; 
+  const icon = <img className="icon-img" alt="Usuario" src={iconTeam}/>; 
 
   const breadcrumb = [{ title: "Usuarios", url: "/usuarios" }];
 
