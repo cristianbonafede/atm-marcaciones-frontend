@@ -61,7 +61,6 @@ const Filters = (props) => {
 
   useEffect(() => {
     updateFiledFilters();
-    console.log("Filters updated", context.filters);
   }, [context.filtersVisible, context.filters]);
   return (
     <div style={{ marginBottom: 24 }}>

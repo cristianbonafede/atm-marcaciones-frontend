@@ -43,6 +43,10 @@ import OcupacionesDetailPage from "./pages/Ocupaciones/OcupacionesDetail";
 import OcupacionesListPage from "./pages/Ocupaciones/OcupacionesList";
 import EmpleadoSectorList from "./pages/EmpleadoSector/EmpleadoSectorList";
 import EmpleadoSectorDetailPage from "./pages/EmpleadoSector/EmpleadoSectorDetail";
+import LicenseTypesListPage from "./pages/LicenseTypes/LicenseTypesList";
+import LicenseTypesDetailPage from "./pages/LicenseTypes/LicenseTypesDetail";
+import LicenciasDetailPage from "./pages/Licencias/LicenciasDetail";
+import LicenciasListPage from "./pages/Licencias/LicenciasList";
 
 function App() {
   return (
@@ -63,6 +67,9 @@ function App() {
             <Route path="usuarios" element={<UsuariosListPage />} />
             <Route path="auditorias/:id" element={<AuditoriasDetailPage />} />
             <Route path="auditorias" element={<AuditoriasListPage />} />
+            <Route path="empleados/licencias/:id" element={<LicenciasDetailPage />} />
+            <Route path="empleados/licencias" element={<LicenciasListPage />} />
+            <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="sucursales" element={<SucursalesPage />} />
@@ -74,6 +81,8 @@ function App() {
             <Route path="config/sectores" element={<SectoresListPage />} /> 
             <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />
             <Route path="config/dedicacion" element={<DedicacionesList />} />
+            <Route path="config/tipos-licencias/:id" element={<LicenseTypesDetailPage />} />
+            <Route path="config/tipos-licencias" element={<LicenseTypesListPage />} />
             <Route path="config/ocupaciones/:id" element={<OcupacionesDetailPage />} />
             <Route path="config/ocupaciones" element={<OcupacionesListPage />} />
             <Route path="" exact element={<InicioPage />} />

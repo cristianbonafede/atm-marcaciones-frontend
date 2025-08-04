@@ -95,44 +95,44 @@ const EmpleadosListPage = () => {
     async function getData() {
 
       const [
-      occupationsRes,
-      workercategoriesRes,
-      workplacesRes,
-    ] = await Promise.all([
-      http.get("occupations?Page=1&Size=10000"),
-      http.get("workercategories?Page=1&Size=10000"),
-      http.get("workplaces?Page=1&Size=10000"),
-    ]);
-    const newFilters = [...filters];
-    if (occupationsRes) {
-      newFilters[3] = {
-        ...newFilters[3],
-        values: occupationsRes.data.list.map((item) => ({
-          value: item.occupationId,
-          text: item.name,
-        })),
-      };
-    }
-    if (workercategoriesRes) {
-      newFilters[4] = {
-        ...newFilters[4],
-        values: workercategoriesRes.data.list.map((item) => ({
-          value: item.workercategoryId,
-          text: item.name,
-        })),
-      };
-    }
+        occupationsRes,
+        workercategoriesRes,
+        workplacesRes,
+      ] = await Promise.all([
+        http.get("occupations?Page=1&Size=10000"),
+        http.get("workercategories?Page=1&Size=10000"),
+        http.get("workplaces?Page=1&Size=10000"),
+      ]);
+      const newFilters = [...filters];
+      if (occupationsRes) {
+        newFilters[3] = {
+          ...newFilters[3],
+          values: occupationsRes.data.list.map((item) => ({
+            value: item.occupationId,
+            text: item.name,
+          })),
+        };
+      }
+      if (workercategoriesRes) {
+        newFilters[4] = {
+          ...newFilters[4],
+          values: workercategoriesRes.data.list.map((item) => ({
+            value: item.workercategoryId,
+            text: item.name,
+          })),
+        };
+      }
 
-    if (workplacesRes) {
-      newFilters[6] = {
-        ...newFilters[6],
-        values: workplacesRes.data.list.map((item) => ({
-          value: item.workplaceId,
-          text: item.name,
-        })),
-      };
-    }
-    setFilters(newFilters);
+      if (workplacesRes) {
+        newFilters[6] = {
+          ...newFilters[6],
+          values: workplacesRes.data.list.map((item) => ({
+            value: item.workplaceId,
+            text: item.name,
+          })),
+        };
+      }
+      setFilters(newFilters);
     }
     getData();
   }, []);
@@ -148,8 +148,9 @@ const EmpleadosListPage = () => {
           Ver
         </Menu.Item>
       )}
+
       {hasPermission(actions.EmpleadosEditar) && (
-        <Menu.Item key="1" icon={<FaEdit />} onClick={() => onClickEdit(item)}>
+        <Menu.Item key="3" icon={<FaEdit />} onClick={() => onClickEdit(item)}>
           Editar
         </Menu.Item>
       )}
@@ -162,6 +163,15 @@ const EmpleadosListPage = () => {
           {item.habilitado ? "Deshabilitar" : "Habilitar"}
         </Menu.Item>
       )}
+      {hasPermission(actions.LicenciasVer) && (
+        <Menu.Item
+          key="4"
+          icon={<FaSearch />}
+          onClick={() => onClickLicencia(item)}
+        >
+          Ver Licencias
+        </Menu.Item>
+      )}
     </Menu>
   );
 
@@ -171,6 +181,9 @@ const EmpleadosListPage = () => {
 
   const onClickEdit = (item) => {
     navigate(`/empleados/${item.id}`);
+  };
+  const onClickLicencia = (item) => {
+    navigate(`/empleados/licencias?workerId=${item.id}`);
   };
 
   const onClickDelete = async (item) => {

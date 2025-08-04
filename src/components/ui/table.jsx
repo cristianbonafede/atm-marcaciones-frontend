@@ -13,7 +13,7 @@ import classes from "./table.module.scss";
 import search from "./../../assets/images/search.png";
 
 const Table = (props) => {
-  const { columns, menu, filterUsuario, setIsFilter, prefilter } = props;
+  const { columns, menu, filterUsuario, setIsFilter, prefilter, defaultFilters } = props;
   const context = useContext(TableContext);
 
   const [first, setFirst] = useState(true);
@@ -30,8 +30,21 @@ const Table = (props) => {
       setFirst(false);
       return;
     }
-
     const settings = JSON.parse(serialized);
+
+    if (defaultFilters && typeof defaultFilters === "object") {
+      settings.filters = settings.filters || {};
+
+      for (const key in defaultFilters) {
+        if (key in settings.filters) {
+          delete settings.filters[key];
+        }
+      }
+      settings.filters = { ...defaultFilters, ...settings.filters };
+
+    }
+
+    console.log("settings", settings);
     context.updateFilters(settings.filters);
     context.updatePage(settings.page);
     setSize(settings.size);
@@ -171,7 +184,7 @@ const Table = (props) => {
 
           {!loading &&
             list.map((item) => (
-              <tr key={item.id} onClick={() => props.onRowClick && props.onRowClick(item)} className={ props.onRowClick ? classes.tableRow: ''}>
+              <tr key={item.id} onClick={() => props.onRowClick && props.onRowClick(item)} className={props.onRowClick ? classes.tableRow : ''}>
                 {menu &&
                   <td className={classes.actions}>
                     <Dropdown

@@ -59,7 +59,7 @@ const Sidebar = () => {
       <div className={`${classes.version} ${collapsed ? classes.versionRes : ""}`}></div>
       <SimpleBar style={{ maxHeight: "calc(90vh - 115px)" }}>
         <Menu theme="dark" mode="inline">
-          {menuConfig.map((item, idx) =>
+          items={menuConfig.map((item, idx) =>
             item.children ? (
               <Menu.SubMenu
                 key={item.label}

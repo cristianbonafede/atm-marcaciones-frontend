@@ -34,6 +34,7 @@ export const hasPermission = (action) => {
   const jwtToken = jwtDecode(token);
 
   const hasPermission = jwtToken.permisos.indexOf(action) > -1;
+  console.log("hasPermission", action, hasPermission);
   return hasPermission || true;
 
 };
