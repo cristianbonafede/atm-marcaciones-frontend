@@ -5,12 +5,13 @@ import menuConfig from "../ui/menuConfig";
 import { FaChevronRight } from "react-icons/fa";
 import classes from "./submenu-cards.module.scss";
 
-const SubmenuCards = ({ parentLabel }) => {
+const SubmenuCards = ({ parentPath }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   // Busca el menú principal por label
-  const parent = useMemo(() => menuConfig.find((m) => m.label === parentLabel), [parentLabel]);
+  const parent = useMemo(() => menuConfig.find((m) => m.path === parentPath), [parentPath]);
+  debugger;
   if (!parent || !parent.children) return null;
 
   return (

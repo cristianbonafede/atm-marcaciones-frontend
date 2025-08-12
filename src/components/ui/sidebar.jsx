@@ -19,7 +19,6 @@ const Sidebar = () => {
 
   const location = useLocation();
 
-  // Mapeo de íconos por label (puedes personalizar esto según tus necesidades)
   const iconMap = {
     "Inicio": <FaHome />,
     "Mis Datos": <FaUser />,
@@ -59,7 +58,7 @@ const Sidebar = () => {
       <div className={`${classes.version} ${collapsed ? classes.versionRes : ""}`}></div>
       <SimpleBar style={{ maxHeight: "calc(90vh - 115px)" }}>
         <Menu theme="dark" mode="inline">
-          items={menuConfig.map((item, idx) =>
+          {menuConfig.map((item, idx) =>
             item.children ? (
               <Menu.SubMenu
                 key={item.label}

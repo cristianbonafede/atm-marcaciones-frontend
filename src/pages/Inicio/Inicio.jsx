@@ -15,7 +15,7 @@ const InicioPage = () => {
             <InicioCard
               item={{
                 ...item,
-                url: item.children ? `/inicio/${encodeURIComponent(item.label)}` : item.path,
+                url: item.children ? `/inicio/${item.path}` : item.path,
                 title: item.label // Forzar que title esté presente para el componente
               }}
             />

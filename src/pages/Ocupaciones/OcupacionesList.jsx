@@ -20,7 +20,10 @@ const OcupacionesListPage = () => {
   const title = "Ocupaciones";
   const icon = <img className="icon-img" src={iconTeam} />;
 
-  const breadcrumb = [{ title: "Ocupaciones", url: "/config/ocupacion" }];
+  const breadcrumb = [
+    { title: "Configuración", url: "/inicio/config" },
+    { title: "Ocupaciones", url: "/config/ocupacion" }
+  ];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);

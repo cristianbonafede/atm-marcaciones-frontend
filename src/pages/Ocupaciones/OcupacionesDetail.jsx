@@ -20,6 +20,7 @@ const OcupacionesDetailPage = () => {
   const title = `${action} Ocupación`;
   const icon = <img className="icon-img" src={iconTeam} />;
   const breadcrumb = [
+    { title: "Configuración", url: "/inicio/config" },
     { title: "Ocupaciones", url: "/ocupaciones" },
     { title: action, url: `/ocupaciones/${id}` },
   ];

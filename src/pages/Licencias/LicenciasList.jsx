@@ -24,7 +24,10 @@ const LicenciasListPage = () => {
   const title = "Licencias";
   const icon = <img className="icon-img" src={iconTeam} />;
 
-  const breadcrumb = [{ title: "Licencias", url: "/empleados/licencias" }];
+  const breadcrumb = [
+    { title: "Empleados", url: "/inicio/empleados" },
+    { title: "Licencias", url: "/empleados/licencias" },
+  ];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);

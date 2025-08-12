@@ -83,10 +83,10 @@ const EmpleadoSectorListPage = ({ crewId, name }) => {
       {hasPermission(actions.EmpleadosSectorEliminar) && (
         <Menu.Item
           key="2"
-          icon={item.finishDatetime ? <FaTrash /> : <FaUndo />}
+          icon={item.finishDatetime ? <FaUndo /> : <FaTrash />}
           onClick={() => onClickDelete(item)}
         >
-          {item.finishDatetime ? "Eliminar" : "Restaurar"}
+          {item.finishDatetime ? "Restaurar" : "Eliminar"}
         </Menu.Item>
       )}
     </Menu>

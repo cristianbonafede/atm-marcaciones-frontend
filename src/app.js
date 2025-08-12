@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import esES from "antd/lib/locale/es_ES";
 import "moment/locale/es";
@@ -48,11 +48,13 @@ import LicenseTypesDetailPage from "./pages/LicenseTypes/LicenseTypesDetail";
 import LicenciasDetailPage from "./pages/Licencias/LicenciasDetail";
 import LicenciasListPage from "./pages/Licencias/LicenciasList";
 
-function App() {
+function App() {  
   return (
-    <ConfigProvider locale={esES} theme={{ hashed: false, token: {
-          fontFamily: ' "Montserrat", sans-serif', // o cualquier otra fuente
-        }, }}>
+    <ConfigProvider locale={esES} theme={{
+      hashed: false, token: {
+        fontFamily: ' "Montserrat", sans-serif', // o cualquier otra fuente
+      },
+    }}>
       <Router>
         <Routes>
           <Route path="auth/login" element={<LoginPage />} />
@@ -67,8 +69,9 @@ function App() {
             <Route path="usuarios" element={<UsuariosListPage />} />
             <Route path="auditorias/:id" element={<AuditoriasDetailPage />} />
             <Route path="auditorias" element={<AuditoriasListPage />} />
-            <Route path="empleados/licencias/:id" element={<LicenciasDetailPage />} />
+            <Route path="/mis-datos/personales" element={<EmpleadosDetailPage/>} />
             <Route path="empleados/licencias" element={<LicenciasListPage />} />
+            <Route path="empleados/licencias/:id" element={<LicenciasDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
@@ -78,7 +81,7 @@ function App() {
             <Route path="reportes/empleados-sector/:id" element={<EmpleadoSectorDetailPage />} />
             <Route path="reportes/empleados-sector" element={<EmpleadoSectorList />} />
             <Route path="config/sectores/:id" element={<SectoresDetailPage />} />
-            <Route path="config/sectores" element={<SectoresListPage />} /> 
+            <Route path="config/sectores" element={<SectoresListPage />} />
             <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />
             <Route path="config/dedicacion" element={<DedicacionesList />} />
             <Route path="config/tipos-licencias/:id" element={<LicenseTypesDetailPage />} />

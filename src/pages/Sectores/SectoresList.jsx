@@ -21,7 +21,10 @@ const SectoresListPage = () => {
   const title = "Sectores";
   const icon = <img className="icon-img" alt="icono" src={iconTeam} />;
 
-  const breadcrumb = [{ title: "Sectores", url: "/sectores" }];
+  const breadcrumb = [
+
+    { title: "Reportes", url: "/inicio/reportes" },
+    { title: "Sectores", url: "/reportes/sectores" }];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);
@@ -236,18 +239,18 @@ const SectoresListPage = () => {
           name={selectedSectorName}
         />
       </Modal>
-<Modal
-  open={showOrganigrama}
-  onCancel={() => setShowOrganigrama(false)}
-  footer={null}
-  title="Organigrama de Sectores"
-  height="85%"
-  width="90%" // o 100% si quieres más ancho
-  style={{top: 20 }} // aumenta el alto
-  bodyStyle={{ overflowY: "auto", height: "90%" }} // aumenta el alto interno
->
-  <SectorTree crews={crews} />
-</Modal>
+      <Modal
+        open={showOrganigrama}
+        onCancel={() => setShowOrganigrama(false)}
+        footer={null}
+        title="Organigrama de Sectores"
+        height="85%"
+        width="90%" // o 100% si quieres más ancho
+        style={{ top: 20 }} // aumenta el alto
+        bodyStyle={{ overflowY: "auto", height: "90%" }} // aumenta el alto interno
+      >
+        <SectorTree crews={crews} />
+      </Modal>
     </>
 
   );

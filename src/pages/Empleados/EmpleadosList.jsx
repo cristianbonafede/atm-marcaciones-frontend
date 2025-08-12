@@ -21,7 +21,10 @@ const EmpleadosListPage = () => {
   const title = "Empleados";
   const icon = <img className="icon-img" src={iconTeam} />;
 
-  const breadcrumb = [{ title: "Empleados", url: "/empleados" }];
+  const breadcrumb = [
+    { title: "Empleados", url: "/inicio/empleados" },
+    { title: "Lista empleados", url: "/empleados" },
+  ];
 
   const [isFilter, setIsFilter] = useState(false);
   const [loadingExport, setLoadingExport] = useState(false);

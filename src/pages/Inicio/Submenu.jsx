@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 const SubmenuPage = () => {
   const { parent } = useParams();
-  return <SubmenuCards parentLabel={parent} />;
+  debugger
+  return <SubmenuCards parentPath={parent} />;
 };
 
 export default SubmenuPage;

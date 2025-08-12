@@ -20,8 +20,9 @@ const SectoresDetailPage = () => {
   const title = `${action} Sector`;
   const icon = <img className="icon-img" alt="Icono" src={iconTeam} />;
   const breadcrumb = [
-    { title: "Sectores", url: "/sectores" },
-    { title: action, url: `/sectores/${id}` },
+    { title: "Reportes", url: "/inicio/reportes" },
+    { title: "Sectores", url: "/reportes/sectores" },
+    { title: action, url: `/reportes/sectores/${id}` },
   ];
 
   return (

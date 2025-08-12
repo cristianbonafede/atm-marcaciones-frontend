@@ -20,8 +20,9 @@ const LicenciasDetailPage = () => {
   const title = `${action} Licencia`;
   const icon = <img className="icon-img" src={iconTeam} />;
   const breadcrumb = [
-    { title: "Licencias", url: "/licencias" },
-    { title: action, url: `/licencias/${id}` },
+    { title: "Empleados", url: "/inicio/empleados" },
+    { title: "Licencias", url: "/empleados/licencias" },
+    { title: action, url: `/empleados/licencias/${id}` },
   ];
 
   return (
