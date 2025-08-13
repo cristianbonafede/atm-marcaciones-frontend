@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Col, Form, Input, Row } from "antd";
-import Viewer from "@whiteyin/react-viewer";
 
 import http from "../../services/http";
 
@@ -59,7 +58,7 @@ const AuditoriaForm = (props) => {
 
         <Col xs={24}>
           <Form.Item label="Contenido">
-            <div className={classes.viewer}>
+            {/* <div className={classes.viewer}>
               <Viewer
                 visible={true}
                 onClose={() => {}}
@@ -76,7 +75,7 @@ const AuditoriaForm = (props) => {
                 showTotal={false}
                 style={{ maxHeight: 400, overflow: 'auto', background: '#f8f8f8' }}
               />
-            </div>
+            </div> */}
           </Form.Item>
         </Col>
       </Row>
