@@ -17,14 +17,14 @@ const AsistenciasResumenListPage = () => {
   const icon = <img className="icon-img" src={iconAttendance} />;
 
   const breadcrumb = [
-    { title: "Empleados", url: "/inicio/empleados" },
-    { title: "Resumen Asistencias", url: "/empleados/resumen-asistencias" },
+    { title: "Reportes", url: "/inicio/reportes" },
+    { title: "Resumen Asistencias", url: "/reportes/resumen-asistencias" },
   ];
   const [isFilter, setIsFilter] = useState(false);
 
   const [filters, setFilters] = useState([
-    { type: "date", label: "Desde", name: "from" },
-    { type: "date", label: "Hasta", name: "to" },
+    { type: "date", label: "Desde", name: "from", half: true },
+    { type: "date", label: "Hasta", name: "to", half: true },
     { type: "select", label: "Empleado", name: "workerId", values: [] },
     { type: "select", label: "Sector", name: "crewId", values: [] },
   ]);
@@ -80,7 +80,7 @@ const AsistenciasResumenListPage = () => {
         <TableNoPagination
           id="table-asistencias-resumen"
           columns={columns}
-          url="/attendances/summary-by-worker"
+          url="/attendances/summary"
           orderBy="workerName"
           orderDirection="ascending"
           setIsFilter={setIsFilter}

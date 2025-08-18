@@ -17,11 +17,44 @@ const TableNoPagination = (props) => {
   const [list, setList] = useState([]);
   const [orderBy, setOrderBy] = useState(props.orderBy);
   const [orderDirection, setOrderDirection] = useState(props.orderDirection);
+  const [first, setFirst] = useState(true);
+  const [size, setSize] = useState(10);
+  const [total, setTotal] = useState(0);
+
+
+    useEffect(() => {
+      const serialized = localStorage.getItem(props.id);
+      if (!serialized) {
+        setFirst(false);
+        return;
+      }
+      const settings = JSON.parse(serialized);
+  
+      if (defaultFilters && typeof defaultFilters === "object") {
+        settings.filters = settings.filters || {};
+  
+        for (const key in defaultFilters) {
+          if (key in settings.filters) {
+            delete settings.filters[key];
+          }
+        }
+        settings.filters = { ...defaultFilters, ...settings.filters };
+  
+      }
+  
+      console.log("settings", settings);
+      context.updateFilters(settings.filters);
+      context.updatePage(settings.page);
+      setSize(settings.size);
+      setOrderBy(settings.orderBy);
+      setOrderDirection(settings.orderDirection);
+      setFirst(false);
+    }, []);
+
 
   useEffect(() => {
     async function getList() {
       setLoading(true);
-
       let url = `${props.url}?${prefilter ? prefilter + "&" : ""}`;
       for (const property in context.filters) {
         url += `&${property}=${context.filters[property] ?? ""}`;
@@ -43,6 +76,12 @@ const TableNoPagination = (props) => {
           });
         }
         setList(data);
+      var settings = {
+        filters: context.filters,
+        orderBy: orderBy,
+        orderDirection: orderDirection,
+      };
+      localStorage.setItem(props.id, JSON.stringify(settings));
       }
       setLoading(false);
     }

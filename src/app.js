@@ -77,7 +77,6 @@ function App() {
             <Route path="empleados/licencias/:id" element={<LicenciasDetailPage />} />
             <Route path="empleados/registro-asistencias" element={<AsistenciasListPage />} />
             <Route path="empleados/registro-asistencias/:id" element={<AsistenciasDetailPage />} />
-            <Route path="empleados/resumen-asistencias" element={<AsistenciasResumenListPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
@@ -90,6 +89,8 @@ function App() {
             <Route path="reportes/sectores" element={<SectoresListPage />} />
             <Route path="reportes/empleados-sector/:id" element={<EmpleadoSectorDetailPage />} />
             <Route path="reportes/empleados-sector" element={<EmpleadoSectorList />} />
+            <Route path="reportes/resumen-asistencias" element={<AsistenciasResumenListPage />} />
+
             <Route path="config/sectores/:id" element={<SectoresDetailPage />} />
             <Route path="config/sectores" element={<SectoresListPage />} />
             <Route path="config/dedicacion/:id" element={<DedicacionesDetailPage />} />

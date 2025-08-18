@@ -35,7 +35,7 @@ const AsistenciasListPage = () => {
     { type: "select", label: "Empleado", name: "workerId", values: [] },
     { type: "select", label: "Máquina", name: "machineId", values: [] },
     { type: "select", label: "Sector", name: "crewId", values: [] },
-    { type: "date", label: "Fecha", name: "dateTime1" },
+    { type: "date", label: "Fecha", name: "dateTime" },
     { type: "select", label: "Estado", name: "status", values: [
       { value: 15, text: "Aprobado" },
       { value: 16, text: "Rechazado" },

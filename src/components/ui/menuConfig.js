@@ -67,7 +67,7 @@ const menuConfig = [
             { label: "Empleados", path: "/empleados", icon: <FaUsers /> },
             // { label: "Empleados por categoria", path: "/reportes/empleados-categoria", icon: <FaRegUser /> },
             { label: "Empleados por sector", path: "/reportes/empleados-sector", icon: <FaRegUser /> },
-            { label: "Resumen de Asistencias", path: "/empleados/resumen-asistencias", icon: <FaRegListAlt /> },
+            { label: "Resumen de Asistencias", path: "/reportes/resumen-asistencias", icon: <FaRegListAlt /> },
 
             // { label: "Trabajadores con datos verificados", path: "/reportes/verificados", icon: <FaUserCheck /> },
             // { label: "Trabajadores sin datos verificados", path: "/reportes/no-verificados", icon: <FaUserTimes /> },

@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
-import moment from "moment";
 
 import TableContext from "../../store/table-context";
+import dayjs from "dayjs";
 
 const Filters = (props) => {
   const [form] = Form.useForm();
@@ -11,12 +11,11 @@ const Filters = (props) => {
 
   const onClickSearch = (values) => {
     const processed = { ...values };
-
     for (const key in processed) {
       const field = fields.find(item => item.name === key);
       if (field?.type === 'date') {
-        if (moment.isMoment(processed[key])) {
-          processed[key] = processed[key].format("DD/MM/YYYY");
+        if (processed[key] && dayjs(processed[key]).isValid()) {
+          processed[key] = dayjs(processed[key]).format("DD/MM/YYYY");
         } else {
           processed[key] = null;
         }
@@ -38,7 +37,7 @@ const Filters = (props) => {
         if (field?.type === 'date') {
           const rawDate = filters[key];
           if (typeof rawDate === 'string' && rawDate.trim() !== '') {
-            const parsedDate = moment(rawDate, 'DD/MM/YYYY', true); // modo estricto
+            const parsedDate = dayjs(rawDate, 'DD/MM/YYYY', true); // modo estricto
             filters[key] = parsedDate.isValid() ? parsedDate : null;
           } else {
             filters[key] = null;
