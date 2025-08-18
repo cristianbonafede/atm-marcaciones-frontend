@@ -52,6 +52,8 @@ const menuConfig = [
             // { label: "Accidentes", path: "/empleados/accidentes", icon: <FaHospital /> },
             // { label: "Autorizaciones de horas extras", path: "/empleados/autorizaciones", icon: <FaCheckCircle /> },
             { label: "Licencias", path: "/empleados/licencias", icon: <FaRegCalendarCheck /> },
+            { label: "Reg. de Asistencias", path: "/empleados/registro-asistencias", icon: <FaRegListAlt /> },
+
             // { label: "Nuevo registro manual", path: "/empleados/nuevo-registro", icon: <FaRegEdit /> },
         ],
     },
@@ -65,6 +67,8 @@ const menuConfig = [
             { label: "Empleados", path: "/empleados", icon: <FaUsers /> },
             // { label: "Empleados por categoria", path: "/reportes/empleados-categoria", icon: <FaRegUser /> },
             { label: "Empleados por sector", path: "/reportes/empleados-sector", icon: <FaRegUser /> },
+            { label: "Resumen de Asistencias", path: "/empleados/resumen-asistencias", icon: <FaRegListAlt /> },
+
             // { label: "Trabajadores con datos verificados", path: "/reportes/verificados", icon: <FaUserCheck /> },
             // { label: "Trabajadores sin datos verificados", path: "/reportes/no-verificados", icon: <FaUserTimes /> },
             // { label: "Reporte de mayor dedicacion", path: "/reportes/mayor-dedicacion", icon: <FaRegStar /> },

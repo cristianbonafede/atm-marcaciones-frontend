@@ -47,6 +47,9 @@ import LicenseTypesListPage from "./pages/LicenseTypes/LicenseTypesList";
 import LicenseTypesDetailPage from "./pages/LicenseTypes/LicenseTypesDetail";
 import LicenciasDetailPage from "./pages/Licencias/LicenciasDetail";
 import LicenciasListPage from "./pages/Licencias/LicenciasList";
+import AsistenciasListPage from "./pages/Asistencias/AsistenciasList";
+import AsistenciasDetailPage from "./pages/Asistencias/AsistenciasDetail";
+import AsistenciasResumenListPage from "./pages/Asistencias/AsistenciasResumenList";
 
 function App() {  
   return (
@@ -72,9 +75,16 @@ function App() {
             <Route path="/mis-datos/personales" element={<EmpleadosDetailPage/>} />
             <Route path="empleados/licencias" element={<LicenciasListPage />} />
             <Route path="empleados/licencias/:id" element={<LicenciasDetailPage />} />
+            <Route path="empleados/registro-asistencias" element={<AsistenciasListPage />} />
+            <Route path="empleados/registro-asistencias/:id" element={<AsistenciasDetailPage />} />
+            <Route path="empleados/resumen-asistencias" element={<AsistenciasResumenListPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
             <Route path="empleados/:id" element={<EmpleadosDetailPage />} />
             <Route path="empleados" element={<EmpleadosListPage />} />
+
+
+
+
             <Route path="sucursales" element={<SucursalesPage />} />
             <Route path="reportes/sectores/:id" element={<SectoresDetailPage />} />
             <Route path="reportes/sectores" element={<SectoresListPage />} />
